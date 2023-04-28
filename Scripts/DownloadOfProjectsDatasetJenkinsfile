@@ -1,0 +1,50 @@
+def LANGUAGES2=['java','php','go','javascript','shell','python','powershell','ruby']
+def TOOLS2=['ansible','terraform','chef','puppet','vagrant','pulumi','saltstack']
+def content2
+def content
+def index
+
+pipeline{
+
+   agent any
+  
+   stages{
+
+    stage("clone repos again ") {
+      steps {
+             script {
+                     
+                     content = new File("path/Manifest.txt").getText()
+                     
+                         for (tool in TOOLS2){
+                             for (lang in LANGUAGES2){
+                                 sh "mkdir -p path/${lang}/${tool}"
+                                 sh "chmod 777  path/${lang}/${tool}"
+                             }
+                         }
+                         
+                         content2=content.readLines()
+                             for (lang in LANGUAGES2){
+                                 for (tool in TOOLS2){
+                                     def i=1
+                                     for (l in content2){
+                                         if (l.contains("git config --file path/${lang}/${tool}/")){
+                                           index = content2.findIndexOf { it == l }
+                                           def lignerepo = content2[index + 2]
+                                           def repo = lignerepo.split("snyk test")
+                                            try{
+                                               sh "mkdir -p path/${lang}/${tool}/projet${i}"
+                                               sh "chmod 777  path/${lang}/${tool}/projet${i}"
+                                               sh "git clone ${repo[repo.size()-1]} path/${lang}/${tool}/projet${i}"
+                                               
+                                            } catch (err) {
+                                              echo "something failed"
+                                            }
+                                            i++
+                                            content2.remove(l)
+                                         }
+                                     }
+                             }
+                         }
+		}
+           }

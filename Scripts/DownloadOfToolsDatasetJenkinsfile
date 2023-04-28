@@ -1,0 +1,59 @@
+def extractInts( String input ) {
+   def result = input.collect{it.find( /\d+/ )}
+   def tmp = ""
+   for(r in result){
+       if(r==null) r=" "
+       tmp=tmp+r
+   }
+   return tmp.split( /\s+/)
+}
+
+def ANSIBLE = 'https://github.com/ansible/ansible.git'
+def CHEF = 'https://github.com/chef/chef.git'
+def PUPPET = 'https://github.com/puppetlabs/puppet.git'
+def PULUMI = 'https://github.com/pulumi/pulumi.git'
+def SALTSTACK = 'https://github.com/saltstack/salt.git'
+def TERRAFORM = 'https://github.com/hashicorp/terraform.git'
+def VAGRANT = 'https://github.com/hashicorp/vagrant.git'
+
+def TOOLS=['ansible','terraform','chef','puppet','vagrant','pulumi','salt']
+def JSON
+def DATA
+def TECHNO
+def LIST
+   
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+       
+/*
+    stage('Clone IaC source codes folders') {
+      steps {
+             script {
+                   sh "mkdir -p initialpath/iactoolscan"
+                   sh "chmod 777  initialpath/iactoolscan"
+                   for (tool in TOOLS){
+                        def TOOLs = (tool=="puppet") ? "puppetlabs": (tool=="salt") ? "saltstack": (tool=="terraform" || tool=="vagrant") ? "hashicorp" : tool
+    
+                        sh "mkdir -p initialpath/iactoolscan/${tool}"
+                        //sh "chmod 777  initialpath/iactoolscan/${tool}"
+                           
+                           try {
+                              sh "git clone https://github.com/${TOOL}/${tool}.git initialpath/iactoolscan/${tool}"
+                           } catch (err) {
+                               
+                               echo "something failed"
+                           }
+                   }
+                }
+            }
+       }
+    
+      
+   }
+   
+}

@@ -1,0 +1,87 @@
+def extractInts( String input ) {
+   def result = input.collect{it.find( /\d+/ )}
+   def tmp = ""
+   for(r in result){
+       if(r==null) r=" "
+       tmp=tmp+r
+   }
+   return tmp.split( /\s+/)
+}
+
+def ANSIBLE = 'https://github.com/ansible/ansible.git'
+def CHEF = 'https://github.com/chef/chef.git'
+def PUPPET = 'https://github.com/puppetlabs/puppet.git'
+def PULUMI = 'https://github.com/pulumi/pulumi.git'
+def SALTSTACK = 'https://github.com/saltstack/salt.git'
+def TERRAFORM = 'https://github.com/hashicorp/terraform.git'
+def VAGRANT = 'https://github.com/hashicorp/vagrant.git'
+
+def TOOLS=['ansible','terraform','chef','puppet','vagrant','pulumi','salt']
+def JSON
+def DATA
+def TECHNO
+def LIST
+   
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+       
+    stage('Scan of IaC tools source code with Snyk code') {
+      steps {
+             script {
+                        
+                for (tool in TOOLS){
+                     try {
+                               
+                           sh "snyk code test initialpath/iactoolscan/${tool}"
+                        } catch (err) {
+                           
+                           echo "something failed"
+                        }
+                 }*/
+            }
+       }
+    }
+    stage('Scan of IaC tools source code with Snyk manifest') {
+      steps {
+             script {
+                 
+                 for (tool in TOOLS){
+                     try {
+                               
+                           sh "snyk test initialpath/iactoolscan/${tool} --all-projects --detection-depth=3"
+                        } catch (err) {
+                           
+                           echo "something failed"
+                        }
+                 }
+            }
+       }
+    }
+    
+    stage('Scan of IaC tools source code with Snyk IaC') {
+      steps {
+             script {
+                 
+                 for (tool in TOOLS){
+                     try {
+                               
+                           sh "snyk iac test initialpath/iactoolscan/${tool} --detection-depth=3"
+                        } catch (err) {
+                           
+                           echo "something failed"
+                        }
+                 }
+            }
+       }
+    }
+    
+    
+      
+   }
+   
+}

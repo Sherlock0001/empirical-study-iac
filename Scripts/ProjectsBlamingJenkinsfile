@@ -1,0 +1,91 @@
+def LANGUAGES2=['java','php','go','javascript','shell','python','powershell','ruby']
+def TOOLS2=['ansible','terraform','chef','puppet','vagrant','pulumi','saltstack']
+def TOOL=[]
+def TNUMBERS=[]
+def NUMBERS2=[]
+def fnumbers=[]
+def ftnumbers=[]
+def list=[]
+def desc=[]
+def sever=[]
+def fileEdit=[]
+def fsever=[]
+def files=[]
+def files2=[]
+def tfiles=[]
+def desc2=[]
+def desc3=[]
+def content2
+def content
+def index
+ 
+def extractInts( String input ) {
+   def result = input.collect{it.find( /\d+/ )}
+   def tmp = ""
+   for(r in result){
+       if(r==null) r=" "
+       tmp=tmp+r
+   }
+   return tmp.split( /\s+/)
+} 
+   
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+
+    stage("clone repos again ") {
+      steps {
+             script {
+                    for (tool in TOOLS2){
+                        for (lang in LANGUAGES2){
+                                sh "ls initialPath/${lang}/${tool} > initialPath/output.json "
+                                def list2 = new File("/Users/aicha.war/.jenkins/workspace/blamingprojects2/output.json").text.readLines()
+                                for (id in list2){
+                                     
+                                       sh "git -C initialPath/${lang}/${tool}/${id} log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -15 > initialPath/output.json"
+                                       content = new File("initialPath/output.json").text.readLines()
+                                       for(l in content){
+                                           index = content.findIndexOf { it == l }
+                                           if (index>0) {
+                                               def ext = l.split('\\.')
+                                               def value = extractInts(l)
+                                               for (v in value){
+                                                   if (v.length() > 0) fileEdit.add(Double.parseDouble(v))
+                                               }
+                                               
+                                               if (ext.size() > 1) files.add(ext[ext.size()-1])
+                                               
+                                           }
+                                        }
+                             }
+                         }
+                                
+                           echo "============== ${tool} ================="
+                           tfiles=files.unique(false)
+                           for(item in tfiles) {
+                               def add = 0
+                               for(f in files) {
+                                   if(item==f) add += fileEdit[files.findIndexOf { it == f }]
+                               }
+                               ftnumbers.add(add)
+                           }
+                           
+                           for(tf in tfiles){
+                                   index = tfiles.findIndexOf { it == tf }
+                                   echo "${tf} ====== ${ftnumbers[index]}"
+                           } 
+                            fileEdit=[]
+                            ftnumbers=[]
+                            files=[]
+                            tfiles=[]
+               }
+            }
+        
+           }
+        }   
+    }
+}

@@ -1,0 +1,85 @@
+def extractInts( String input ) {
+   def result = input.collect{it.find( /\d+/ )}
+   def tmp = ""
+   for(r in result){
+       if(r==null) r=" "
+       tmp=tmp+r
+   }
+   return tmp.split( /\s+/)
+}
+
+def ANSIBLE = 'https://github.com/ansible/ansible.git'
+def CHEF = 'https://github.com/chef/chef.git'
+def PUPPET = 'https://github.com/puppetlabs/puppet.git'
+def PULUMI = 'https://github.com/pulumi/pulumi.git'
+def SALTSTACK = 'https://github.com/saltstack/salt.git'
+def TERRAFORM = 'https://github.com/hashicorp/terraform.git'
+def VAGRANT = 'https://github.com/hashicorp/vagrant.git'
+
+def TOOLS=['ansible','terraform','chef','puppet','pulumi','vagrant','salt']
+   
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+     
+    
+    stage('Retrieve top 300 most edited files from IaC tools repositories') {
+      steps {
+             script {
+                           def fileEdit=[]
+                           def ftnumbers=[]
+                           def files=[]
+                           def tfiles=[]
+                           
+                 for (tool in TOOLS){
+                       
+                            echo "=============== ${tool}  ==================="
+                           sh "touch files.txt"
+                           sh "git -C initialPath/${tool} log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -300 > files.txt"
+                           def content = new File("initialPath/files.txt").text.readLines()
+                           for(l in content){
+                               def index = content.findIndexOf { it == l }
+                               if (index>0) {
+                                   def ext = l.split('\\.')
+                                   def value = extractInts(l)
+                                   for (v in value){
+                                       if (v.length() > 0) fileEdit.add(v.toInteger())
+                                   }
+                                   
+                                   if (ext.size() > 1) files.add(ext[ext.size()-1])
+                                   
+                               }
+                            }
+                       tfiles=files.unique(false)
+                       for(item in tfiles) {
+                           def add = 0
+                           for(f in files) {
+                               if(item==f) add += fileEdit[files.findIndexOf { it == f }]
+                           }
+                           ftnumbers.add(add)
+                       }
+                       
+                       for(tf in tfiles){
+                               def index = tfiles.findIndexOf { it == tf }
+                               echo "${tf} ====== ${ftnumbers[index]}"
+                       }
+                       
+                           fileEdit=[]
+                           ftnumbers=[]
+                           files=[]
+                           tfiles=[]
+                }
+                
+            }
+       }
+    }
+    
+    
+      
+   }
+   
+}

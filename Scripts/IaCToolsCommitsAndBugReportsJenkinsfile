@@ -1,0 +1,107 @@
+def extractInts( String input ) {
+   def result = input.collect{it.find( /\d+/ )}
+   def tmp = ""
+   for(r in result){
+       if(r==null) r=" "
+       tmp=tmp+r
+   }
+   return tmp.split( /\s+/)
+}
+
+def ANSIBLE = 'https://github.com/ansible/ansible.git'
+def CHEF = 'https://github.com/chef/chef.git'
+def PUPPET = 'https://github.com/puppetlabs/puppet.git'
+def PULUMI = 'https://github.com/pulumi/pulumi.git'
+def SALTSTACK = 'https://github.com/saltstack/salt.git'
+def TERRAFORM = 'https://github.com/hashicorp/terraform.git'
+def VAGRANT = 'https://github.com/hashicorp/vagrant.git'
+
+def TOOLS=['ansible','terraform','chef','puppet','pulumi','vagrant','salt']
+def VERSIONS=['stable-2.10-branchpoint','stable-2.9-branchpoint','v1.4.0-alpha20221109','v1.3.7','v18.0.196','v18.0.195','v7.20.0','v7.19.0','v3.48.0','v3.47.2','v2.3.3','v2.3.2','v3005.1-4','v3005.1-3']
+int[] NUMBERS = new int[400]
+def ID=[]
+String[][] RESULTS = new int[400][2]
+def JSON
+def DATA
+def TECHNO
+def LIST
+   
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+     
+    
+    stage('Retrieve commit logs from repositories') {
+      steps {
+             script {
+                 for (tool in TOOLS){
+                        def index = TOOLS.findIndexOf { it == tool }
+                        def i = 2*index
+                       
+                            echo "=============== ${tool} VERSION ${VERSIONS[i]} ==================="
+                       try {
+                           sh "git -C initialPath/${tool}/${VERSIONS[i]} log --pretty=oneline"
+                       } catch (err) {
+                           echo "something failed"
+                       }
+                       
+                            echo "=============== ${tool} VERSION ${VERSIONS[i+1]} ==================="
+                       try {
+                            sh "git -C initialPath/${tool}/${VERSIONS[i+1]} log --pretty=oneline"
+                       } catch (err) {
+                           
+                           echo "something failed"
+                       }
+                       
+                            echo "=============== ${tool} VERSION 3} ==================="
+                       try {
+                            sh "git -C initialPath/${tool} log --pretty=oneline"
+                       } catch (err) {
+                           
+                           echo "something failed"
+                       }
+                }
+            }
+       }
+    }
+    
+    stage('Retrieve reported issues from repositories') {
+      steps {
+             script {
+                 for (tool in TOOLS){
+                        def index = TOOLS.findIndexOf { it == tool }
+                        def i = 2*index
+                       
+                            echo "=============== ${tool} VERSION ${VERSIONS[i]} ==================="
+                       try {
+                           sh "git-issues -r initialPath/${tool}/${VERSIONS[i]}"
+                       } catch (err) {
+                           echo "something failed"
+                       }
+                       
+                            echo "=============== ${tool} VERSION ${VERSIONS[i+1]} ==================="
+                       try {
+                            sh "git-issues -r initialPath/${tool}/${VERSIONS[i+1]}"
+                        } catch (err) {
+                           echo "something failed"
+                       }
+                       
+                            echo "=============== ${tool} VERSION 3 ==================="
+                       try {
+                            sh "git-issues -r initialPath/${tool}"
+                        } catch (err) {
+                           echo "something failed"
+                       }
+                }
+            }
+       }
+    }
+    
+      
+   }
+   
+}

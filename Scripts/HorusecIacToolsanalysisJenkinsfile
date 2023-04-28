@@ -1,0 +1,55 @@
+def extractInts( String input ) {
+   def result = input.collect{it.find( /\d+/ )}
+   def tmp = ""
+   for(r in result){
+       if(r==null) r=" "
+       tmp=tmp+r
+   }
+   return tmp.split( /\s+/)
+}
+
+def ANSIBLE = 'https://github.com/ansible/ansible.git'
+def CHEF = 'https://github.com/chef/chef.git'
+def PUPPET = 'https://github.com/puppetlabs/puppet.git'
+def PULUMI = 'https://github.com/pulumi/pulumi.git'
+def SALTSTACK = 'https://github.com/saltstack/salt.git'
+def TERRAFORM = 'https://github.com/hashicorp/terraform.git'
+def VAGRANT = 'https://github.com/hashicorp/vagrant.git'
+
+def TOOLS=['ansible','terraform','chef','puppet','vagrant','pulumi','salt']
+def JSON
+def DATA
+def TECHNO
+def LIST
+   
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+
+     stage('Scan of source codes with Horusec') {
+      steps {
+             script {
+
+                            sh 'curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest'
+                 for (tool in TOOLS){
+                       
+                       try {
+                            sh "sudo -su aicha.war horusec start -D true -p path/iactoolscan/${tool}"
+                       } catch (err) {
+                           
+                           echo "something failed"
+                       }
+                }
+            }
+       }
+    }
+    
+    
+      
+   }
+   
+}

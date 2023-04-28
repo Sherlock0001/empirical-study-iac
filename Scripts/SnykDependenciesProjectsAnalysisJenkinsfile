@@ -1,0 +1,96 @@
+def extractInts( String input ) {
+   def result = input.collect{it.find( /\d+/ )}
+   def tmp = ""
+   for(r in result){
+       if(r==null) r=" "
+       tmp=tmp+r
+   }
+   return tmp.split( /\s+/)
+}
+
+
+def LANGUAGES=['java','php','c','go','cobol','javascript','vba','shell','haskell','julia','python','erlang','apl','swift','powershell','dart','scala','groovy','ruby','lisp','elixir','clojure','rust','delphi','kotlin','crystal','perl']
+def LANGUAGES2=['java','php','go','javascript','shell','python','powershell','ruby']
+def LANGUAGES3=['ruby']
+def TOOLS2=['ansible','terraform','chef','puppet','vagrant','pulumi','saltstack']
+def TOOLS3=['terraform']
+def TOOLS4=['puppet','vagrant','pulumi','saltstack']
+def JSON
+def DATA
+def TECHNO
+def LIST
+   
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+          stage('Now we run dependencies tests for the repositories') {
+      steps {
+             script {
+                 
+                 def low=0
+                 def medium=0
+                 def high=0
+                 def critical=0
+                 def i = 0
+                 def content=""
+                 def content2=""
+                 def report=[]
+                 sh "touch path/snyk2.txt"
+                 sh "chmod a+x path/snyk2.txt"
+                 sh "touch path/snyk3.txt"
+                 sh "chmod a+x path/snyk3.txt"
+                 for (language in LANGUAGES2) {
+                    if(language != null){
+                        for (tool in TOOLS2) {
+                            if(tool != null){
+                                // WE GET THE PROJECT URL TO FEED TO SNYK FOR THE DEPENDENCIES TESTING 
+                                sh "ls path/${language}/${tool} > path/yaml.json "
+                                def list = new File("path/yaml.json").text.readLines()
+                                for(id in list){
+                                   sh "git config --file path/${language}/${tool}/${id}/.git/config --get remote.origin.url > path/snyk2.txt"
+                                   content = new File('path/snyk2.txt').getText()
+                                   try {
+                                       def command = "snyk test ${content}"
+                                        sh "${command} > path/snyk3.txt >2 path/snyk3.txt" 
+                                   } catch (err) {
+                                      echo "something failed"
+                                   }
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+       }
+    }
+
+    stage('Now we display results per language') {
+      steps {
+             script {
+                 def k=0
+                 for (language in LANGUAGES2) {
+                        echo "${language}'s CASE ==========================================================================================================================="
+                        for (tool in TOOLS2) {
+                            if(tool != null){
+                                def toolIndex = RESULTS2[k][6]
+                                def noErrors = RESULTS2[k][0]
+                                def noFiles = RESULTS2[k][1]
+                                def low = RESULTS2[k][5]
+                                def medium = RESULTS2[k][4]
+                                def high = RESULTS2[k][3]
+                                def critical = RESULTS2[k][2]
+                                echo "FOR ${TOOLS3[toolIndex]} WE HAVE: ${low} LOW, ${medium} MEDIUM, ${high} HIGH AND ${critical} CRITICAL VULNERABILITIES, ${noErrors} OF NO ERRORS AND ${noFiles} OF NO FILES TO TEST"
+                                k=k+1
+                            }
+                        }
+                    }
+                }
+            }
+       }
+   }
+}   

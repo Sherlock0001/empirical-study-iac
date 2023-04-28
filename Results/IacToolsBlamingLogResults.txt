@@ -1,0 +1,305 @@
+Started by user Aicha War
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/aicha.war/.jenkins/workspace/blamingtools
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Retrieve top 300 most edited files from IaC tools repositories)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+=============== ansible  ===================
+[Pipeline] sh
++ touch files.txt
+[Pipeline] sh
++ git -C /Users/aicha.war/Desktop/ansible log --pretty=format: --name-only
++ sort -rg
++ uniq -c
++ sort
++ head -300
+[Pipeline] echo
+md ====== 2120
+[Pipeline] echo
+yml ====== 3205
+[Pipeline] echo
+py ====== 102108
+[Pipeline] echo
+txt ====== 3744
+[Pipeline] echo
+js ====== 234
+[Pipeline] echo
+cfg ====== 205
+[Pipeline] echo
+html ====== 2100
+[Pipeline] echo
+rst ====== 58
+[Pipeline] echo
+spec ====== 118
+[Pipeline] echo
+gitignore ====== 101
+[Pipeline] echo
+j2 ====== 168
+[Pipeline] echo
+in ====== 73
+[Pipeline] echo
+ps1 ====== 140
+[Pipeline] echo
+1 ====== 61
+[Pipeline] echo
+sh ====== 55
+[Pipeline] echo
+yaml ====== 54
+[Pipeline] echo
+=============== terraform  ===================
+[Pipeline] sh
++ touch files.txt
+[Pipeline] sh
++ git -C /Users/aicha.war/Desktop/terraform log --pretty=format: --name-only
++ uniq -c
++ sort
++ sort -rg
++ head -300
+[Pipeline] echo
+md ====== 42790
+[Pipeline] echo
+json ====== 966
+[Pipeline] echo
+go ====== 97844
+[Pipeline] echo
+sum ====== 370
+[Pipeline] echo
+mod ====== 365
+[Pipeline] echo
+erb ====== 2328
+[Pipeline] echo
+txt ====== 206
+[Pipeline] echo
+yml ====== 127
+[Pipeline] echo
+markdown ====== 2286
+[Pipeline] echo
+css ====== 106
+[Pipeline] echo
+scss ====== 164
+[Pipeline] echo
+rb ====== 50
+[Pipeline] echo
+less ====== 46
+[Pipeline] echo
+sh ====== 44
+[Pipeline] echo
+mdx ====== 40
+[Pipeline] echo
+lock ====== 38
+[Pipeline] echo
+js ====== 2
+[Pipeline] echo
+gitignore ====== 1
+[Pipeline] echo
+=============== chef  ===================
+[Pipeline] sh
++ touch files.txt
+[Pipeline] sh
++ git -C /Users/aicha.war/Desktop/chef log --pretty=format: --name-only
++ sort
++ uniq -c
++ sort -rg
++ head -300
+[Pipeline] echo
+lock ====== 26388
+[Pipeline] echo
+md ====== 21990
+[Pipeline] echo
+rb ====== 945912
+[Pipeline] echo
+gemspec ====== 576
+[Pipeline] echo
+yml ====== 1918
+[Pipeline] echo
+gitignore ====== 101
+[Pipeline] echo
+json ====== 95
+[Pipeline] echo
+toml ====== 53
+[Pipeline] echo
+=============== puppet  ===================
+[Pipeline] sh
++ touch files.txt
+[Pipeline] sh
++ git -C /Users/aicha.war/Desktop/puppet log --pretty=format: --name-only
++ sort
++ head -300
++ sort -rg
++ uniq -c
+[Pipeline] echo
+5 ====== 782
+[Pipeline] echo
+rb ====== 1235
+[Pipeline] echo
+pot ====== 5
+[Pipeline] echo
+8 ====== 14384
+[Pipeline] echo
+gemspec ====== 208
+[Pipeline] echo
+spec ====== 8
+[Pipeline] echo
+ra ====== 358
+[Pipeline] echo
+yaml ====== 280
+[Pipeline] echo
+yml ====== 258
+[Pipeline] echo
+md ====== 86
+[Pipeline] echo
+erb ====== 78
+[Pipeline] echo
+=============== pulumi  ===================
+[Pipeline] sh
++ touch files.txt
+[Pipeline] sh
++ git -C /Users/aicha.war/Desktop/pulumi log --pretty=format: --name-only
++ sort -rg
++ head -300
++ uniq -c
++ sort
+[Pipeline] echo
+md ====== 4150
+[Pipeline] echo
+go ====== 53463
+[Pipeline] echo
+mod ====== 820
+[Pipeline] echo
+ts ====== 3768
+[Pipeline] echo
+sum ====== 426
+[Pipeline] echo
+yml ====== 999
+[Pipeline] echo
+proj ====== 93
+[Pipeline] echo
+json ====== 170
+[Pipeline] echo
+py ====== 1245
+[Pipeline] echo
+proto ====== 142
+[Pipeline] echo
+lock ====== 56
+[Pipeline] echo
+sh ====== 110
+[Pipeline] echo
+gitignore ====== 51
+[Pipeline] echo
+ps1 ====== 48
+[Pipeline] echo
+cs ====== 138
+[Pipeline] echo
+version ====== 41
+[Pipeline] echo
+mk ====== 41
+[Pipeline] echo
+js ====== 76
+[Pipeline] echo
+tmpl ====== 36
+[Pipeline] echo
+txt ====== 60
+[Pipeline] echo
+=============== vagrant  ===================
+[Pipeline] sh
++ touch files.txt
+[Pipeline] sh
++ git -C /Users/aicha.war/Desktop/vagrant log --pretty=format: --name-only
++ sort
++ uniq -c
++ sort -rg
++ head -300
+[Pipeline] echo
+md ====== 41312
+[Pipeline] echo
+yml ====== 5775
+[Pipeline] echo
+rb ====== 95748
+[Pipeline] echo
+gemspec ====== 298
+[Pipeline] echo
+txt ====== 141
+[Pipeline] echo
+sum ====== 107
+[Pipeline] echo
+mod ====== 106
+[Pipeline] echo
+go ====== 1313
+[Pipeline] echo
+gitignore ====== 61
+[Pipeline] echo
+erb ====== 300
+[Pipeline] echo
+json ====== 174
+[Pipeline] echo
+lock ====== 37
+[Pipeline] echo
+proto ====== 68
+[Pipeline] echo
+ps1 ====== 32
+[Pipeline] echo
+sh ====== 56
+[Pipeline] echo
+spec ====== 28
+[Pipeline] echo
+css ====== 22
+[Pipeline] echo
+=============== salt  ===================
+[Pipeline] sh
++ touch files.txt
+[Pipeline] sh
++ git -C /Users/aicha.war/Desktop/salt log --pretty=format: --name-only
++ sort
++ uniq -c
++ sort -rg
++ head -300
+[Pipeline] echo
+py ====== 394750
+[Pipeline] echo
+rst ====== 5252
+[Pipeline] echo
+7 ====== 278
+[Pipeline] echo
+nsi ====== 171
+[Pipeline] echo
+yaml ====== 165
+[Pipeline] echo
+sh ====== 132
+[Pipeline] echo
+ci/kitchen-ubuntu1604-py3 ====== 127
+[Pipeline] echo
+ci/kitchen-centos7-py3 ====== 127
+[Pipeline] echo
+md ====== 127
+[Pipeline] echo
+ci/kitchen-centos7-py2 ====== 126
+[Pipeline] echo
+ci/kitchen-ubuntu1604-py2 ====== 126
+[Pipeline] echo
+txt ====== 22
+[Pipeline] echo
+yml ====== 6
+[Pipeline] echo
+ci/kitchen-windows2016-py3 ====== 110
+[Pipeline] echo
+pylintrc ====== 509
+[Pipeline] echo
+1 ====== 630
+[Pipeline] echo
+ci/kitchen-windows2016-py2 ====== 105
+[Pipeline] echo
+ci/lint ====== 103
+[Pipeline] echo
+gitignore ====== 2016
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

@@ -1,0 +1,115 @@
+def extractInts( String input ) {
+   def result = input.collect{it.find( /\d+/ )}
+   def tmp = ""
+   for(r in result){
+       if(r==null) r=" "
+       tmp=tmp+r
+   }
+   return tmp.split( /\s+/)
+}
+
+
+def LANGUAGES2=['java','php','go','javascript','shell','python','powershell','ruby']
+def TOOLS2=['ansible','terraform','chef','puppet','vagrant','pulumi','saltstack']
+def NUMBERS=[]
+def ID=[]
+int[][] RESULTS2 = new int[LANGUAGES2.size()*TOOLS2.size()][7]
+def JSON
+def DATA
+def TECHNO
+def LIST
+
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+
+   stage('Now we run IaC tests for the repositories') {
+      steps {
+             script {
+                 
+                 def low=0
+                 def medium=0
+                 def high=0
+                 def critical=0
+                 def i = 0
+                 def content=""
+                 def content2=""
+                 def report=[]
+                 sh "touch path/yaml.json"
+                 sh "chmod a+x path/yaml.json"
+                 sh "touch path/snyk.txt"
+                 sh "chmod a+x path/snyk.txt"
+                 for (language in LANGUAGES2) {
+                        for (tool in TOOLS2) {
+                                
+                                sh "ls path/${language}/${tool} > path/yaml.json "
+                                def list = new File("path/yaml.json").text.readLines()
+                                for(id in list){
+                                   try {
+                          
+                                       sh "snyk code test path/${language}/${tool}/${id} > /path/snyk.txt"
+                                       } catch (err) {
+                                      echo "something failed"
+                                    }
+                                   content = new File('path/snyk.txt').getText()
+                                   echo "${content}"
+                                   report = new File('path/snyk.txt').text.readLines()
+                                    if(content.contains("Could not find ")){
+                                           
+                                       RESULTS[i][1] = RESULTS[i][1] + 1
+                                       
+                                   }else {
+                                       for(r in report){
+                                           if(r.contains("Low Severity")) low=low+1
+                                           else if(r.contains("Medium Severity")) medium = medium+1
+                                           else if(r.contains("High Severity")) high = high+1
+                                           else if(r.contains("Critical Severity")) critical = critical+1
+                                       }
+                                       if(low==0 && medium==0 && high==0 && critical==0){
+                                           
+                                           RESULTS[i][0] = RESULTS[i][0] + 1
+                                       }else{
+                                           
+                                           RESULTS[i][2] = RESULTS[i][2] + critical
+                                           RESULTS[i][3] = RESULTS[i][3] + high
+                                           RESULTS[i][4] = RESULTS[i][4] + medium
+                                           RESULTS[i][5] = RESULTS[i][5] + low
+                                       }
+                                   }
+                                   
+                                }
+                                
+                            }
+                        }
+            }
+       }
+    }
+    stage('Now we display results per language') {
+      steps {
+             script {
+                 def k=0
+                 for (language in LANGUAGES2) {
+                        echo "${language}'s CASE ==========================================================================================================================="
+                        for (tool in TOOLS2) {
+                            if(tool != null){
+                                def toolIndex = RESULTS2[k][6]
+                                def noErrors = RESULTS2[k][0]
+                                def noFiles = RESULTS2[k][1]
+                                def low = RESULTS2[k][5]
+                                def medium = RESULTS2[k][4]
+                                def high = RESULTS2[k][3]
+                                def critical = RESULTS2[k][2]
+                                echo "FOR ${TOOLS3[toolIndex]} WE HAVE: ${low} LOW, ${medium} MEDIUM, ${high} HIGH AND ${critical} CRITICAL VULNERABILITIES, ${noErrors} OF NO ERRORS AND ${noFiles} OF NO FILES TO TEST"
+                                k=k+1
+                            }
+                        }
+                    }
+                }
+            }
+       }
+   }
+}   

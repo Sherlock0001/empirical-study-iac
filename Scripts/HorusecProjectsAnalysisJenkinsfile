@@ -1,0 +1,55 @@
+def extractInts( String input ) {
+   def result = input.collect{it.find( /\d+/ )}
+   def tmp = ""
+   for(r in result){
+       if(r==null) r=" "
+       tmp=tmp+r
+   }
+   return tmp.split( /\s+/)
+}
+
+def LANGUAGES=['java','php','go','javascript','shell','python','powershell','ruby']
+def TOOLS=['ansible','terraform','chef','puppet','vagrant','pulumi','saltstack']
+   
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+    
+    stage('Scan of source codes with Horusec') {
+      steps {
+             script {
+                  sh 'touch yaml.json'
+                  sh 'chmod a+x yaml.json'
+                   try {
+                        sh 'curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest'
+                   } catch (err) {
+                       
+                       echo "something failed"
+                   }
+                 for (language in LANGUAGES) {
+                        for (tool in TOOLS) {
+                                
+                                sh "ls path/iactoolscan/${language}/${tool} > path/iactoolscan/yaml.json "
+                                def list = new File("path/iactoolscan/yaml.json").text.readLines()
+                                for(id in list){
+                                    
+                                   try {
+                                        sh "horusec start -D true -p path/iactoolscan/${language}/${tool}/${id}"
+                                   } catch (err) {
+                                       
+                                       echo "something failed"
+                                   }
+                                }
+                            }
+                }
+            }
+       }
+    } 
+    
+      
+   }
+}   

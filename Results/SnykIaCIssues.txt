@@ -1,0 +1,439 @@
+Started by user Aicha War
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/aicha.war/.jenkins/workspace/displayiac@2
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Now we run IaC output Counting)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Now we display IaC test results per language)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+DESCRIPTION++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++TOTAL
+[Pipeline] echo
+  ✗ Hardcoded admin password in VM configuration [High Severity] [SNYK-CC-TF-263] in Compute                                                                    71
+[Pipeline] echo
+  ✗ Storage Account does not enforce latest TLS [Medium Severity] [SNYK-CC-TF-149] in Storage                                                                    98
+[Pipeline] echo
+  ✗ Storage Account geo-replication disabled [Medium Severity] [SNYK-CC-AZURE-649] in Storage                                                                    36
+[Pipeline] echo
+  ✗ VM Agent is not provisioned automatically for Windows [Low Severity] [SNYK-CC-AZURE-667] in Compute                                                                    27
+[Pipeline] echo
+  ✗ Virtual Network DDoS protection plan disabled [Low Severity] [SNYK-CC-AZURE-516] in Network                                                                    99
+[Pipeline] echo
+  ✗ Trusted Microsoft Service access to storage account is disabled [Low Severity] [SNYK-CC-TF-172] in Storage                                                                    43
+[Pipeline] echo
+  ✗ Azure Network Security Group allows public access [Medium Severity] [SNYK-CC-TF-33] in Network                                                                    62
+[Pipeline] echo
+  ✗ Role with too wide permissions [High Severity] [SNYK-CC-K8S-44] in ClusterRole                                                                    13
+[Pipeline] echo
+  ✗ Container does not drop all default capabilities [Medium Severity] [SNYK-CC-K8S-6] in Deployment                                                                    372
+[Pipeline] echo
+  ✗ Container is running without root user control [Medium Severity] [SNYK-CC-K8S-10] in Deployment                                                                    360
+[Pipeline] echo
+  ✗ Container is running without privilege escalation control [Medium Severity] [SNYK-CC-K8S-9] in Deployment                                                                    374
+[Pipeline] echo
+  ✗ Container could be running with outdated image [Low Severity] [SNYK-CC-K8S-42] in Deployment                                                                    266
+[Pipeline] echo
+  ✗ Container is running with writable root filesystem [Low Severity] [SNYK-CC-K8S-8] in Deployment                                                                    354
+[Pipeline] echo
+  ✗ Container has no CPU limit [Low Severity] [SNYK-CC-K8S-5] in Deployment                                                                    316
+[Pipeline] echo
+  ✗ Container is running without memory limit [Low Severity] [SNYK-CC-K8S-4] in Deployment                                                                    319
+[Pipeline] echo
+  ✗ Container is running without liveness probe [Low Severity] [SNYK-CC-K8S-41] in Deployment                                                                    253
+[Pipeline] echo
+  ✗ Service does not restrict ingress sources [Medium Severity] [SNYK-CC-K8S-15] in Service                                                                    69
+[Pipeline] echo
+  ✗ Non-encrypted S3 Bucket [Medium Severity] [SNYK-CC-TF-4] in S3                                                                    135
+[Pipeline] echo
+  ✗ S3 server access logging is disabled [Low Severity] [SNYK-CC-TF-45] in S3                                                                    149
+[Pipeline] echo
+  ✗ S3 bucket MFA delete control disabled [Low Severity] [SNYK-CC-TF-127] in S3                                                                    145
+[Pipeline] echo
+  ✗ Security Group allows open ingress [Medium Severity] [SNYK-CC-TF-1] in VPC                                                                    194
+[Pipeline] echo
+  ✗ Non-Encrypted root block device [Medium Severity] [SNYK-CC-TF-53] in EC2                                                                    530
+[Pipeline] echo
+  ✗ Missing description [Low Severity] [SNYK-CC-TF-56] in VPC                                                                    47
+[Pipeline] echo
+  ✗ EC2 instance accepts IMDSv1 [Low Severity] [SNYK-CC-TF-130] in EC2                                                                    456
+[Pipeline] echo
+  ✗ EC2 API termination protection is not enabled [Low Severity] [SNYK-CC-AWS-426] in EC2                                                                    501
+[Pipeline] echo
+  ✗ AWS Security Group allows open egress [Low Severity] [SNYK-CC-TF-73] in VPC                                                                    130
+[Pipeline] echo
+  ✗ Default VPC resource detected [Low Severity] [SNYK-CC-AWS-423] in VPC                                                                    8
+[Pipeline] echo
+  ✗ Load balancer is internet facing [Low Severity] [SNYK-CC-TF-48] in Elastic Load Balancing                                                                    48
+[Pipeline] echo
+  ✗ S3 restrict public bucket control is disabled [High Severity] [SNYK-CC-TF-98] in S3                                                                    28
+[Pipeline] echo
+  ✗ S3 ignore public ACLs control is disabled [High Severity] [SNYK-CC-TF-97] in S3                                                                    21
+[Pipeline] echo
+  ✗ S3 block public policy control is disabled [High Severity] [SNYK-CC-TF-96] in S3                                                                    28
+[Pipeline] echo
+  ✗ S3 block public ACLs control is disabled [High Severity] [SNYK-CC-TF-95] in S3                                                                    28
+[Pipeline] echo
+  ✗ CloudWatch log group not encrypted with managed key [Low Severity] [SNYK-CC-AWS-415] in CloudWatch                                                                    70
+[Pipeline] echo
+  ✗ S3 bucket versioning disabled [Low Severity] [SNYK-CC-TF-124] in S3                                                                    139
+[Pipeline] echo
+  ✗ X-ray tracing is disabled for Lambda function [Low Severity] [SNYK-CC-TF-133] in Lambda                                                                    110
+[Pipeline] echo
+  ✗ Non-Encrypted SNS Topic [Medium Severity] [SNYK-CC-TF-55] in SNS                                                                    27
+[Pipeline] echo
+  ✗ SNS topic is not encrypted with customer managed key [Low Severity] [SNYK-CC-AWS-422] in SNS                                                                    26
+[Pipeline] echo
+  ✗ Resource has public IP assigned [Low Severity] [SNYK-CC-TF-51] in EC2                                                                    31
+[Pipeline] echo
+  ✗ API Server allows public access [Medium Severity] [SNYK-CC-TF-81] in Container                                                                    22
+[Pipeline] echo
+  ✗ Azure Container Registry Admin is enabled [Medium Severity] [SNYK-CC-AZURE-594] in Container                                                                    1
+[Pipeline] echo
+  ✗ AKS Network Policies disabled [Low Severity] [SNYK-CC-TF-176] in Container                                                                    20
+[Pipeline] echo
+  ✗ Geo replication for Azure Container Images disabled [Low Severity] [SNYK-CC-AZURE-595] in Container                                                                    2
+[Pipeline] echo
+  ✗ AKS Kubernetes Dashboard enabled [Low Severity] [SNYK-CC-TF-177] in Container                                                                    6
+[Pipeline] echo
+  ✗ DynamoDB point-in-time recovery disabled [Medium Severity] [SNYK-CC-TF-125] in DynamoDB                                                                    11
+[Pipeline] echo
+  ✗ DynamoDB not encrypted with customer managed key [Low Severity] [SNYK-CC-AWS-417] in DynamoDB                                                                    16
+[Pipeline] echo
+  ✗ Kinesis data stream is not encrypted at rest [Medium Severity] [SNYK-CC-AWS-450] in Kinesis                                                                    1
+[Pipeline] echo
+  ✗ Credentials are configured via provider attributes [High Severity] [SNYK-CC-TF-74] in Provider                                                                    80
+[Pipeline] echo
+  ✗ Non-encrypted EBS volume [Medium Severity] [SNYK-CC-TF-3] in EC2                                                                    17
+[Pipeline] echo
+  ✗ GKE client certificate auth is enabled [High Severity] [SNYK-CC-TF-87] in Kubernetes (Container) Engine                                                                    13
+[Pipeline] echo
+  ✗ GKE Workload Identity is disabled [Medium Severity] [SNYK-CC-TF-84] in Kubernetes (Container) Engine                                                                    13
+[Pipeline] echo
+  ✗ GKE private cluster options is not enabled [Medium Severity] [SNYK-CC-TF-238] in Kubernetes (Container) Engine                                                                    13
+[Pipeline] echo
+  ✗ GKE PodSecurityPolicy controller is disabled [Medium Severity] [SNYK-CC-TF-88] in Kubernetes (Container) Engine                                                                    13
+[Pipeline] echo
+  ✗ GKE Shield is disabled [Low Severity] [SNYK-CC-TF-89] in Kubernetes (Container) Engine                                                                    13
+[Pipeline] echo
+  ✗ GKE cluster labels are missing [Low Severity] [SNYK-CC-TF-202] in Kubernetes (Container) Engine                                                                    13
+[Pipeline] echo
+  ✗ GKE Alias IP disabled [Low Severity] [SNYK-CC-TF-269] in Kubernetes (Container) Engine                                                                    13
+[Pipeline] echo
+  ✗ GKE Network Policies enforcement disabled [Low Severity] [SNYK-CC-TF-196] in Kubernetes (Container) Engine                                                                    13
+[Pipeline] echo
+  ✗ GKE Node Pool auto upgrade disabled [Low Severity] [SNYK-CC-TF-195] in Kubernetes (Container) Engine                                                                    9
+[Pipeline] echo
+  ✗ Default service account used [High Severity] [SNYK-CC-GCP-284] in Compute Engine                                                                    104
+[Pipeline] echo
+  ✗ Shielded VM disabled [Medium Severity] [SNYK-CC-GCP-282] in Compute Engine                                                                    123
+[Pipeline] echo
+  ✗ Project wide ssh keys are allowed [Low Severity] [SNYK-CC-GCP-281] in Compute Engine                                                                    123
+[Pipeline] echo
+  ✗ Customer supplied encryption keys are not used to encrypt VM compute instance [Low Severity] [SNYK-CC-TF-184] in Compute Engine                                                                    124
+[Pipeline] echo
+  ✗ Delete protection is disabled [Low Severity] [SNYK-CC-GCP-461] in Compute Engine                                                                    123
+[Pipeline] echo
+  ✗ ECR repository is not encrypted with customer managed key [Low Severity] [SNYK-CC-AWS-418] in ECR                                                                    13
+[Pipeline] echo
+  ✗ ECR Registry allows mutable tags [Low Severity] [SNYK-CC-TF-126] in ECR                                                                    8
+[Pipeline] echo
+  ✗ Resource is publicly accessible [High Severity] [SNYK-CC-TF-50] in Public Access                                                                    3
+[Pipeline] echo
+  ✗ RDS IAM authentication is disabled [Medium Severity] [SNYK-CC-AWS-414] in RDS                                                                    12
+[Pipeline] echo
+  ✗ RDS automatic backup is disabled [Medium Severity] [SNYK-CC-AWS-408] in RDS                                                                    8
+[Pipeline] echo
+  ✗ Non-encrypted RDS instance at rest [Medium Severity] [SNYK-CC-TF-201] in RDS                                                                    10
+[Pipeline] echo
+  ✗ Public IPs are automatically mapped to instances [Low Severity] [SNYK-CC-AWS-427] in VPC                                                                    25
+[Pipeline] echo
+  ✗ API Gateway allows anonymous access [High Severity] [SNYK-CC-TF-99] in API Gateway (REST APIs)                                                                    3
+[Pipeline] echo
+  ✗ Container is running with multiple open ports [Low Severity] [SNYK-CC-K8S-36] in Deployment                                                                    13
+[Pipeline] echo
+  ✗ ECR image scanning is disabled [Low Severity] [SNYK-CC-TF-61] in ECR                                                                    5
+[Pipeline] echo
+  ✗ ECS ContainerInsights disabled [Low Severity] [SNYK-CC-TF-128] in ECS                                                                    7
+[Pipeline] echo
+  ✗ CloudWatch Log group retention period not set [Low Severity] [SNYK-CC-TF-134] in CloudWatch                                                                    11
+[Pipeline] echo
+  ✗ KMS key does not have key rotation enabled [Low Severity] [SNYK-CC-TF-14] in KMS                                                                    21
+[Pipeline] echo
+  ✗ IAM Policy grants full administrative rights [Medium Severity] [SNYK-CC-TF-119] in IAM                                                                    3
+[Pipeline] echo
+  ✗ RoleBinding or ClusterRoleBinding is using a pre-defined role [High Severity] [SNYK-CC-K8S-46] in ClusterRoleBinding                                                                    13
+[Pipeline] echo
+  ✗ ECR policy allows public access [High Severity] [SNYK-CC-TF-93] in ECR                                                                    2
+[Pipeline] echo
+  ✗ Load balancer endpoint does not enforce HTTPS [Medium Severity] [SNYK-CC-TF-47] in Elastic Load Balancing                                                                    11
+[Pipeline] echo
+  ✗ ALB does not drop invalid headers [Low Severity] [SNYK-CC-AWS-405] in Elastic Load Balancing                                                                    24
+[Pipeline] echo
+  ✗ Access policy is not attached to the endpoint [Medium Severity] [SNYK-CC-AWS-428] in VPC                                                                    11
+[Pipeline] echo
+  ✗ Rule allows open egress [Low Severity] [SNYK-CC-TF-72] in VPC                                                                    35
+[Pipeline] echo
+  ✗ AWS Security Group Rule allows public access [Medium Severity] [SNYK-CC-TF-37] in VPC                                                                    44
+[Pipeline] echo
+  ✗ Azure Network Security Rule allows public access [Medium Severity] [SNYK-CC-TF-35] in Network                                                                    59
+[Pipeline] echo
+  ✗ Default network automatically created [Low Severity] [SNYK-CC-GCP-275] in Cloud Platform                                                                    7
+[Pipeline] echo
+  ✗ IAM user with privileged roles at project level [Medium Severity] [SNYK-CC-GCP-298] in IAM                                                                    2
+[Pipeline] echo
+  ✗ Uniform bucket-level access disabled [Medium Severity] [SNYK-CC-TF-240] in Cloud Storage                                                                    5
+[Pipeline] echo
+  ✗ Logging is not enabled on storage bucket [Low Severity] [SNYK-CC-GCP-274] in Cloud Storage                                                                    5
+[Pipeline] echo
+  ✗ Google storage bucket does not use customer-managed keys to encrypt data [Low Severity] [SNYK-CC-TF-185] in Cloud Storage                                                                    5
+[Pipeline] echo
+  ✗ Object versioning is not enabled [Low Severity] [SNYK-CC-GCP-271] in Cloud Storage                                                                    5
+[Pipeline] echo
+  ✗ GCP Compute Firewall allows public access [Medium Severity] [SNYK-CC-TF-32] in Compute Engine                                                                    13
+[Pipeline] echo
+  ✗ DNSSEC is not enabled on managed zone [Low Severity] [SNYK-CC-GCP-273] in Cloud DNS                                                                    2
+[Pipeline] echo
+  ✗ S3 Bucket is publicly readable [Medium Severity] [SNYK-CC-TF-18] in S3                                                                    7
+[Pipeline] echo
+  ✗ Non-Encrypted ElastiCache data in transit [Medium Severity] [SNYK-CC-TF-214] in ElastiCache                                                                    2
+[Pipeline] echo
+  ✗ Non-Encrypted ElastiCache Replication Group [Medium Severity] [SNYK-CC-TF-71] in ElastiCache                                                                    2
+[Pipeline] echo
+  ✗ IAM authentication for RDS cluster is disabled [Medium Severity] [SNYK-CC-AWS-710] in RDS                                                                    6
+[Pipeline] echo
+  ✗ Secrets Manager is not encrypted with customer managed key [Low Severity] [SNYK-CC-AWS-421] in Secrets Manager                                                                    2
+[Pipeline] echo
+  ✗ Non-Encrypted SQS Queue [Medium Severity] [SNYK-CC-TF-54] in SQS                                                                    4
+[Pipeline] echo
+  ✗ ElastiCache automatic backup is disabled [Medium Severity] [SNYK-CC-AWS-407] in ElastiCache                                                                    1
+[Pipeline] echo
+  ✗ Role with too wide permissions [Medium Severity] [SNYK-CC-K8S-44] in Role                                                                    17
+[Pipeline] echo
+  ✗ Privileged container [High Severity] [SNYK-CC-K8S-1] in Deployment                                                                    22
+[Pipeline] echo
+  ✗ Container is running in host's Network namespace [Medium Severity] [SNYK-CC-K8S-14] in Deployment                                                                    27
+[Pipeline] echo
+  ✗ Vault secret expiration date not set [Low Severity] [SNYK-CC-TF-174] in Key Vault                                                                    4
+[Pipeline] echo
+  ✗ Encryption at rest is disabled [Medium Severity] [SNYK-CC-TF-77] in Compute                                                                    2
+[Pipeline] echo
+  ✗ API Gateway does not enforce latest TLS/SSL policy [Low Severity] [SNYK-CC-TF-63] in API Gateway (REST APIs)                                                                    7
+[Pipeline] echo
+  ✗ AWS EC2-Classic resource detected [Low Severity] [SNYK-CC-TF-46] in EC2                                                                    9
+[Pipeline] echo
+  ✗ Cloudfront distribution does not enforce HTTPS [Medium Severity] [SNYK-CC-TF-57] in CloudFront                                                                    2
+[Pipeline] echo
+  ✗ CloudFront access logging disabled [Low Severity] [SNYK-CC-TF-142] in CloudFront                                                                    4
+[Pipeline] echo
+  ✗ Cloudfront distribution without WAF [Low Severity] [SNYK-CC-TF-75] in CloudFront                                                                    4
+[Pipeline] echo
+  ✗ CloudTrail not integrated with CloudWatch [Low Severity] [SNYK-CC-TF-256] in CloudTrail                                                                    1
+[Pipeline] echo
+  ✗ Key Vault purge protection is disabled [Medium Severity] [SNYK-CC-AZURE-624] in Security Center                                                                    9
+[Pipeline] echo
+  ✗ Key Vault accidental purge prevention disabled [Low Severity] [SNYK-CC-TF-175] in Key Vault                                                                    9
+[Pipeline] echo
+  ✗ Use two or more App Service Plan instances [Medium Severity] [SNYK-CC-AZURE-618] in App Service (Web Apps)                                                                    6
+[Pipeline] echo
+  ✗  Function App does not enforce HTTPS [Medium Severity] [SNYK-CC-AZURE-500] in App Service (Web Apps)                                                                    2
+[Pipeline] echo
+  ✗ Function App built-in authentication disabled [Medium Severity] [SNYK-CC-AZURE-501] in App Service (Web Apps)                                                                    1
+[Pipeline] echo
+  ✗ API Gateway X-Ray tracing disabled [Low Severity] [SNYK-CC-TF-129] in API Gateway (REST APIs)                                                                    2
+[Pipeline] echo
+  ✗ API Gateway access logging disabled [Low Severity] [SNYK-CC-TF-138] in API Gateway (REST APIs)                                                                    2
+[Pipeline] echo
+  ✗ Cognito user pool without MFA [Low Severity] [SNYK-CC-AWS-451] in Cognito                                                                    2
+[Pipeline] echo
+  ✗ EKS cluster allows public access [High Severity] [SNYK-CC-TF-94] in EKS                                                                    3
+[Pipeline] echo
+  ✗ EKS cluster has non-encrypted secrets at rest [Medium Severity] [SNYK-CC-TF-107] in EKS                                                                    4
+[Pipeline] echo
+  ✗ EKS control plane logging insufficient [Low Severity] [SNYK-CC-TF-131] in EKS                                                                    3
+[Pipeline] echo
+  ✗ Elasticsearch domain logging disabled [Low Severity] [SNYK-CC-TF-140] in ElasticSearch                                                                    3
+[Pipeline] echo
+  ✗ Non-Encrypted Kinesis Stream [Medium Severity] [SNYK-CC-TF-62] in Kinesis                                                                    1
+[Pipeline] echo
+  ✗ Non-encrypted EFS at rest [Medium Severity] [SNYK-CC-TF-204] in EFS                                                                    1
+[Pipeline] echo
+  ✗ Default VPC Security Group allows open egress [Medium Severity] [SNYK-CC-TF-6] in VPC                                                                    1
+[Pipeline] echo
+  ✗ Sagemaker is not encrypted with customer managed key [Low Severity] [SNYK-CC-AWS-441] in Sagemaker                                                                    1
+[Pipeline] echo
+  ✗ API Management allows anonymous access to developer portal [Low Severity] [SNYK-CC-AZURE-504] in API Management                                                                    1
+[Pipeline] echo
+  ✗ App Service allows FTP deployments [High Severity] [SNYK-CC-AZURE-533] in App Service (Web Apps)                                                                    5
+[Pipeline] echo
+  ✗ Azure App Service allows HTTP traffic [Medium Severity] [SNYK-CC-TF-144] in App Service (Web Apps)                                                                    5
+[Pipeline] echo
+  ✗ App Service authentication disabled [Low Severity] [SNYK-CC-TF-160] in App Service (Web Apps)                                                                    4
+[Pipeline] echo
+  ✗ App Service mutual TLS disabled [Low Severity] [SNYK-CC-TF-162] in App Service (Web Apps)                                                                    5
+[Pipeline] echo
+  ✗ App Service identity missing [Low Severity] [SNYK-CC-TF-161] in App Service (Web Apps)                                                                    5
+[Pipeline] echo
+  ✗ App Service HTTP/2 disabled [Low Severity] [SNYK-CC-TF-163] in App Service (Web Apps)                                                                    5
+[Pipeline] echo
+  ✗ Ensure Diagnostic Setting captures appropriate categories [Low Severity] [SNYK-CC-AZURE-552] in Monitor                                                                    4
+[Pipeline] echo
+  ✗ Linux virtual machine has password authentication enabled [High Severity] [SNYK-CC-TF-79] in Compute                                                                    18
+[Pipeline] echo
+  ✗ Storage container allows public access [High Severity] [SNYK-CC-TF-181] in Storage                                                                    3
+[Pipeline] echo
+  ✗ CDN Endpoint https not enforced [Medium Severity] [SNYK-CC-AZURE-509] in CDN                                                                    1
+[Pipeline] echo
+  ✗ Restrict user access to data operations in Azure Cosmos DB [Medium Severity] [SNYK-CC-AZURE-621] in CosmosDB (DocumentDB)                                                                    4
+[Pipeline] echo
+  ✗ CosmosDB account public network access enabled [Medium Severity] [SNYK-CC-AZURE-511] in CosmosDB (DocumentDB)                                                                    4
+[Pipeline] echo
+  ✗ CosmosDB account automatic failover disabled [Low Severity] [SNYK-CC-AZURE-510] in CosmosDB (DocumentDB)                                                                    3
+[Pipeline] echo
+  ✗ Vault key expiration date not set [Low Severity] [SNYK-CC-TF-173] in Key Vault                                                                    2
+[Pipeline] echo
+  ✗ Data Factory public access enabled [Medium Severity] [SNYK-CC-AZURE-513] in Data Factory                                                                    2
+[Pipeline] echo
+  ✗ Data Factory not encrypted with customer managed key [Low Severity] [SNYK-CC-AZURE-514] in Data Factory                                                                    2
+[Pipeline] echo
+  ✗ App Gateway does not use OWASP 3.x rules [Medium Severity] [SNYK-CC-AZURE-610] in Network                                                                    3
+[Pipeline] echo
+  ✗ WAF not enabled on application gateway [Medium Severity] [SNYK-CC-AZURE-474] in Network                                                                    3
+[Pipeline] echo
+  ✗ PostgreSQL server minimum TLS version 1.2 [Medium Severity] [SNYK-CC-AZURE-629] in Database                                                                    22
+[Pipeline] echo
+  ✗ Redis Cache minimum TLS version [Medium Severity] [SNYK-CC-AZURE-633] in Redis                                                                    3
+[Pipeline] echo
+  ✗ Redis Cache backup disabled [Low Severity] [SNYK-CC-AZURE-518] in Redis                                                                    3
+[Pipeline] echo
+  ✗ Azure Search service public network access enabled [High Severity] [SNYK-CC-AZURE-642] in Search                                                                    1
+[Pipeline] echo
+  ✗ Azure Search Service is not using system-assigned identities [Low Severity] [SNYK-CC-AZURE-641] in Search                                                                    1
+[Pipeline] echo
+  ✗ Windows VM scale set encryption at host disabled [Medium Severity] [SNYK-CC-AZURE-478] in Compute                                                                    14
+[Pipeline] echo
+  ✗ Service fabric does not use active directory authentication [Medium Severity] [SNYK-CC-AZURE-473] in Service Fabric                                                                    1
+[Pipeline] echo
+  ✗ SQL Server auditing is disabled [Low Severity] [SNYK-CC-TF-167] in Database                                                                    5
+[Pipeline] echo
+  ✗ Traffic Manager insecure probing protocol [Low Severity] [SNYK-CC-AZURE-650] in Network                                                                    4
+[Pipeline] echo
+  ✗ Ensure that RDP access is restricted from the internet [Medium Severity] [SNYK-CC-AZURE-676] in Network                                                                    16
+[Pipeline] echo
+  ✗ Ensure that SSH access is restricted from the internet [Medium Severity] [SNYK-CC-AZURE-677] in Network                                                                    19
+[Pipeline] echo
+  ✗ Backend service logging is disabled [Medium Severity] [SNYK-CC-GCP-460] in Compute Engine                                                                    1
+[Pipeline] echo
+  ✗ Backend service is not enforcing HTTPS [Medium Severity] [SNYK-CC-GCP-459] in Compute Engine                                                                    1
+[Pipeline] echo
+  ✗ VPC Flow Logs for VPC Network Subnets Disabled [Low Severity] [SNYK-CC-TF-194] in Compute Engine                                                                    7
+[Pipeline] echo
+  ✗ Customer supplied encryption keys are not used to encrypt compute disk [Low Severity] [SNYK-CC-TF-183] in Compute Engine                                                                    5
+[Pipeline] echo
+  ✗ RoleBinding to the default service account [Medium Severity] [SNYK-CC-K8S-45] in RoleBinding                                                                    1
+[Pipeline] echo
+  ✗ Cluster does not enforce latest TLS/SSL policy [Medium Severity] [SNYK-CC-TF-68] in ElasticSearch                                                                    2
+[Pipeline] echo
+  ✗ Encryption at rest is not supported by instance type [Medium Severity] [SNYK-CC-TF-65] in ElasticSearch                                                                    1
+[Pipeline] echo
+  ✗ Cluster does not enforce HTTPS [Medium Severity] [SNYK-CC-TF-67] in ElasticSearch                                                                    2
+[Pipeline] echo
+  ✗ Node-to-node encryption is disabled [Medium Severity] [SNYK-CC-TF-66] in ElasticSearch                                                                    2
+[Pipeline] echo
+  ✗ Policy does not prevent use of root user [Medium Severity] [SNYK-CC-K8S-22] in Pod Security Policy                                                                    4
+[Pipeline] echo
+  ✗ Policy does not restrict default capabilities [Medium Severity] [SNYK-CC-K8S-24] in Pod Security Policy                                                                    4
+[Pipeline] echo
+  ✗ Policy allows all capabilities [Medium Severity] [SNYK-CC-K8S-23] in Pod Security Policy                                                                    3
+[Pipeline] echo
+  ✗ Policy allows sharing of host's Network namespace [Medium Severity] [SNYK-CC-K8S-21] in Pod Security Policy                                                                    2
+[Pipeline] echo
+  ✗ Role with dangerous permissions [Medium Severity] [SNYK-CC-K8S-47] in Role                                                                    13
+[Pipeline] echo
+  ✗ Wildcard principal in SQS access policy [Medium Severity] [SNYK-CC-AWS-701] in SQS                                                                    1
+[Pipeline] echo
+  ✗ Role with dangerous permissions [High Severity] [SNYK-CC-K8S-47] in ClusterRole                                                                    22
+[Pipeline] echo
+  ✗ Service is using an external IP [High Severity] [SNYK-CC-K8S-43] in Service                                                                    3
+[Pipeline] echo
+  ✗ Role that grant permissions to system reserved namespace [Medium Severity] [SNYK-CC-K8S-48] in RoleBinding                                                                    9
+[Pipeline] echo
+  ✗ Container is running in host's PID namespace [Medium Severity] [SNYK-CC-K8S-3] in Deployment                                                                    2
+[Pipeline] echo
+  ✗ Container is running with host device path mount [Medium Severity] [SNYK-CC-K8S-37] in Deployment                                                                    3
+[Pipeline] echo
+  ✗ App Service remote debugging enabled [Medium Severity] [SNYK-CC-AZURE-619] in App Service (Web Apps)                                                                    1
+[Pipeline] echo
+  ✗ AWS Network ACL Rule allows public access [Medium Severity] [SNYK-CC-TF-42] in VPC                                                                    6
+[Pipeline] echo
+  ✗ AWS Network ACL allows public access [Medium Severity] [SNYK-CC-TF-41] in VPC                                                                    6
+[Pipeline] echo
+  ✗ OS Login disabled [Low Severity] [SNYK-CC-GCP-279] in Compute Engine                                                                    1
+[Pipeline] echo
+  ✗ IP forwarding is enabled [Low Severity] [SNYK-CC-GCP-277] in Compute Engine                                                                    2
+[Pipeline] echo
+  ✗ IP forwarding enabled on the instance [Low Severity] [SNYK-CC-GCP-462] in Compute Engine                                                                    2
+[Pipeline] echo
+  ✗ Unrestricted SSH access [High Severity] [SNYK-CC-GCP-295] in Compute Engine                                                                    1
+[Pipeline] echo
+  ✗ Non-encrypted ElasticSearch cluster [Medium Severity] [SNYK-CC-TF-64] in ElasticSearch                                                                    1
+[Pipeline] echo
+  ✗ Wildcard action in ElasticSearch access policy [Medium Severity] [SNYK-CC-AWS-431] in ElasticSearch                                                                    1
+[Pipeline] echo
+  ✗ Container's UID could clash with host's UID [Low Severity] [SNYK-CC-K8S-11] in Deployment                                                                    9
+[Pipeline] echo
+  ✗ SAS token can be used over insecure HTTP [Medium Severity] [SNYK-CC-TF-244] in Storage                                                                    48
+[Pipeline] echo
+  ✗ Linux VM scale set encryption at host disabled [Medium Severity] [SNYK-CC-AZURE-475] in Compute                                                                    26
+[Pipeline] echo
+  ✗ Policy allows all volume types [Medium Severity] [SNYK-CC-K8S-30] in Pod Security Policy                                                                    1
+[Pipeline] echo
+  ✗ Container is running with docker socket mount [High Severity] [SNYK-CC-K8S-2] in Deployment                                                                    1
+[Pipeline] echo
+  ✗ IAM Policy attached to user [Low Severity] [SNYK-CC-TF-116] in IAM                                                                    1
+[Pipeline] echo
+  ✗ Address source/destination check disabled on the instance [Low Severity] [SNYK-CC-AWS-424] in EC2                                                                    4
+[Pipeline] echo
+  ✗ RDS cluster does not have encryption enabled [Medium Severity] [SNYK-CC-AWS-439] in RDS                                                                    4
+[Pipeline] echo
+  ✗ S3 Policy grants full rights to anyone [High Severity] [SNYK-CC-TF-121] in S3                                                                    2
+[Pipeline] echo
+  ✗ Public access level for storage containers & blobs is enabled [High Severity] [SNYK-CC-AZURE-535] in Storage                                                                    3
+[Pipeline] echo
+  ✗ AWS DB Security Group allows public access [Medium Severity] [SNYK-CC-TF-39] in RDS                                                                    2
+[Pipeline] echo
+  ✗ AWS Redshift Security Group allows public access [Medium Severity] [SNYK-CC-TF-38] in Redshift                                                                    2
+[Pipeline] echo
+  ✗ App Service not running latest PHP version [Low Severity] [SNYK-CC-TF-246] in App Service (Web Apps)                                                                    1
+[Pipeline] echo
+  ✗ App Service not running latest .Net version [Low Severity] [SNYK-CC-TF-245] in App Service (Web Apps)                                                                    1
+[Pipeline] echo
+  ✗ Active-Active VPN Gateways not in use [Low Severity] [SNYK-CC-AZURE-655] in Network                                                                    5
+[Pipeline] echo
+  ✗ AKS local accounts are enabled [Medium Severity] [SNYK-CC-AZURE-605] in Container                                                                    4
+[Pipeline] echo
+  ✗ Container Insights is disabled for AKS [Low Severity] [SNYK-CC-TF-82] in Container                                                                    4
+[Pipeline] echo
+  ✗ GKE Node Pool auto repair disabled [Low Severity] [SNYK-CC-TF-232] in Kubernetes (Container) Engine                                                                    2
+[Pipeline] echo
+  ✗ AKS managed Azure Active Directory integration is disabled [Low Severity] [SNYK-CC-AZURE-606] in Container                                                                    2
+[Pipeline] echo
+  ✗ Azure Network Security Rule allows open egress [Low Severity] [SNYK-CC-TF-76] in Network                                                                    3
+[Pipeline] echo
+  ✗ Container is running in host's IPC namespace [Medium Severity] [SNYK-CC-K8S-13] in Deployment                                                                    1
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
