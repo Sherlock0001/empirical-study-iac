@@ -1,0 +1,23 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Security Vulnerabilities in Infrastructure as Code: What,
+  How Many, and Who?
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Aicha
+    family-names: War
+  - given-names: 'Andrew '
+    family-names: Habib
+  - given-names: 'Alioune '
+    family-names: Diallo
+  - given-names: 'Jacques '
+    family-names: Klein
+  - given-names: Tegawendé F.
+    family-names: Bissyandé
+repository-artifact: 'https://github.com/Sherlock0001/empirical-study-iac.git'
