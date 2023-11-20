@@ -1,0 +1,799 @@
+Started by user Aicha War
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Still waiting to schedule task
+Waiting for next available executor
+Running on Jenkins in /Users/aicha.war/.jenkins/workspace/snykandhorusecintersec
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Retrieving vulnerabilities locations (files and lines) for snyk Code)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 114 + chemin = src/main/java/com/puppetlabs/puppetdb/javaclient/ssl/AbstractSSLSocketFactoryProvider.java
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 312 + chemin = src/main/java/com/puppetlabs/puppetdb/javaclient/impl/PuppetDBClientImpl.java
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 5 + chemin = com.puppetlabs.geppetto.forge.tests/testData/puppetlabs-vcsrepo-1.0.1/spec/acceptance/beaker/git/user_checkout/user_checkout_file.rb
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 43 + chemin = com.puppetlabs.geppetto.forge.api.tests/src/it/java/com/puppetlabs/geppetto/forge/v2/api/it/SLLTest.java
+[Pipeline] echo
+ Command Injection  + ligne = 109 + chemin = com.puppetlabs.geppetto.puppetlint/src/main/java/com/puppetlabs/geppetto/puppetlint/impl/ExternalPuppetLintRunner.java
+[Pipeline] echo
+ XML External Entity (XXE) Injection  + ligne = 166 + chemin = com.puppetlabs.geppetto.junitresult/src/com/puppetlabs/geppetto/junitresult/util/JunitresultLoader.java
+[Pipeline] echo
+ Path Traversal  + ligne = 91 + chemin = com.puppetlabs.geppetto.common/src/com/puppetlabs/geppetto/common/os/FileUtils.java
+[Pipeline] echo
+ TLSCertVerificationDisabled/test  + ligne = 47 + chemin = acceptance_tests/commons/rest_utils.py
+[Pipeline] echo
+ Path Traversal  + ligne = 13 + chemin = src/core/Test.java
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 31 + chemin = com.cloudsmith.puppet.modinfo.cli/src/com/cloudsmith/puppet/modinfo/cli/WebClientDevWrapper.java
+[Pipeline] echo
+ Server-Side Request Forgery (SSRF)  + ligne = 202 + chemin = src/main/java/com/redhat/jcliff/Main.java
+[Pipeline] echo
+ Spring Cross-Site Request Forgery (CSRF)  + ligne = 41 + chemin = src/main/java/com/jorgeacetozi/notepad/note/api/NoteController.java
+[Pipeline] echo
+ Information Exposure  + ligne = 3 + chemin = kubernetes/hello-kubernetes/app/server.js
+[Pipeline] echo
+ Deserialization of Untrusted Data  + ligne = 120 + chemin = libhover/org.eclipse.linuxtools.cdt.libhover/src/org/eclipse/linuxtools/internal/cdt/libhover/LibHoverLibrary.java
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 28 + chemin = examples/web/hello2/src/main/java/javaeetutorial/web/hello2/ResponseServlet.java
+[Pipeline] echo
+ XML External Entity (XXE) Injection  + ligne = 140 + chemin = java/code/src/com/suse/manager/webui/controllers/virtualization/test/VirtualGuestsControllerTest.java
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 129 + chemin = java/code/src/com/redhat/rhn/domain/image/test/ImageInfoFactoryTest.java
+[Pipeline] echo
+ insecureHash  + ligne = 37 + chemin = python/uyuni/common/checksum.py
+[Pipeline] echo
+ Command Injection  + ligne = 163 + chemin = python/spacewalk/satellite_tools/geniso.py
+[Pipeline] echo
+ TLSCertVerificationDisabled  + ligne = 108 + chemin = python/spacewalk/cdn_tools/candlepin_api.py
+[Pipeline] echo
+ SQL Injection  + ligne = 709 + chemin = java/code/src/com/redhat/rhn/domain/server/ServerFactory.java
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 22 + chemin = 3tier-good-original/scratch/archive%20to%20delete/try4/JdbcSelectDemo.java
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 78 + chemin = 3tier-good-original/scratch/archive%20to%20delete/PostgresServerlet/WEB-INF/src/postgresServlet.java
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 26 + chemin = src/main/java/jenkins/plugins/ansible_tower/util/TrustingSSLSocketFactory.java
+[Pipeline] echo
+ Spring Cross-Site Request Forgery (CSRF)  + ligne = 32 + chemin = src/main/java/org/cloudfoundry/samples/music/web/controllers/AlbumController.java
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 44 + chemin = runtime/v1/project-model/src/test/java/com/walmartlabs/concord/project/model/ImportTest.java
+[Pipeline] echo
+ Command Injection  + ligne = 472 + chemin = agent/src/main/java/com/walmartlabs/concord/agent/executors/runner/RunnerJobExecutor.java
+[Pipeline] echo
+ Code Injection  + ligne = 263 + chemin = it/runtime-v2/src/test/java/com/walmartlabs/concord/it/runtime/v2/FormIT.java
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 115 + chemin = server/impl/src/main/java/com/walmartlabs/concord/server/security/GithubAuthenticatingFilter.java
+[Pipeline] echo
+ Path Traversal  + ligne = 54 + chemin = server/impl/src/main/java/com/walmartlabs/concord/server/LogServlet.java
+[Pipeline] echo
+ Cross-Site Request Forgery (CSRF)  + ligne = 16 + chemin = projects/microservices/01-currency-exchange-microservice-basic/src/main/java/com/in28minutes/microservices/currencyexchangeservice/security/SecurityConfiguration.java
+[Pipeline] echo
+ Command Injection  + ligne = 90 + chemin = TerraSpin/src/main/java/com/opsmx/terraspin/controller/TerraController.java
+[Pipeline] echo
+ XML External Entity (XXE) Injection  + ligne = 417 + chemin = src/main/java/com/urbancode/terraform/main/Main.java
+[Pipeline] echo
+ Cross-Site Request Forgery (CSRF)  + ligne = 11 + chemin = project_nodejs/app.js
+[Pipeline] echo
+ SQL Injection  + ligne = 59 + chemin = app/src/main/java/com/example/chefskiss2/IndividualRecipePage.java
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 142 + chemin = core/src/test/java/org/jclouds/chef/internal/BaseChefApiLiveTest.java
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 6 + chemin = source/connection.php
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 28 + chemin = source/index.php
+[Pipeline] echo
+ Path Traversal  + ligne = 5 + chemin = files/index.php
+[Pipeline] echo
+ Command Injection  + ligne = 89 + chemin = src/DevShop/Composer.php
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 246 + chemin = roles/wordpress/templates/advanced-cache.php
+[Pipeline] echo
+ Information Exposure  + ligne = 99 + chemin = mediawiki/tests/parser/fuzzTest.php
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 421 + chemin = mediawiki/tests/parser/editTests.php
+[Pipeline] echo
+ Improper Input Validation  + ligne = 10791 + chemin = mediawiki/extensions/CodeEditor/modules/ace/worker-html.js
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 102 + chemin = mediawiki/tests/qunit/suites/resources/mediawiki.api/mediawiki.api.test.js
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 62 + chemin = mediawiki/tests/phpunit/includes/TestUser.php
+[Pipeline] echo
+ XML External Entity (XXE) Injection  + ligne = 660 + chemin = mediawiki/includes/cache/localisation/LocalisationCache.php
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 85 + chemin = mediawiki/tests/phpunit/includes/media/JpegTest.php
+[Pipeline] echo
+ insecureHash  + ligne = 192 + chemin = mediawiki/extensions/ConfirmEdit/captcha-old.py
+[Pipeline] echo
+ Information Exposure  + ligne = 546 + chemin = mediawiki/includes/MediaWiki.php
+[Pipeline] echo
+ Server-Side Request Forgery (SSRF)  + ligne = 219 + chemin = mediawiki/maintenance/findHooks.php
+[Pipeline] echo
+ SQL Injection  + ligne = 817 + chemin = mediawiki/includes/libs/rdbms/database/DatabasePostgres.php
+[Pipeline] echo
+ Code Injection  + ligne = 147 + chemin = mediawiki/includes/TemplateParser.php
+[Pipeline] echo
+ Deserialization of Untrusted Data  + ligne = 857 + chemin = themes/Avada/framework/plugins/LayerSlider/layerslider.php
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 369 + chemin = plugins/wordpress-https/lib/WordPressHTTPS/Module/Parser.php
+[Pipeline] echo
+ XML External Entity (XXE) Injection  + ligne = 173 + chemin = wp/wp-includes/atomlib.php
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 2513 + chemin = wp/wp-includes/pluggable.php
+[Pipeline] echo
+ Code Injection  + ligne = 859 + chemin = wp/wp-includes/js/customize-preview.js
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 1361 + chemin = wp/wp-admin/js/nav-menu.js
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 322 + chemin = wp/wp-includes/class-snoopy.php
+[Pipeline] echo
+ SQL Injection  + ligne = 1312 + chemin = wp/wp-includes/taxonomy.php
+[Pipeline] echo
+ Path Traversal  + ligne = 1176 + chemin = wp/wp-includes/l10n.php
+[Pipeline] echo
+ Server-Side Request Forgery (SSRF)  + ligne = 128 + chemin = wp/wp-admin/includes/class-file-upload-upgrader.php
+[Pipeline] echo
+ Improper Input Validation  + ligne = 2622 + chemin = modules/wordpress/files/plugins/jetpack/modules/shortcodes/js/jmpress.js
+[Pipeline] echo
+ Information Exposure  + ligne = 107 + chemin = modules/wordpress/files/plugins/w3-total-cache/lib/W3/RootAdminActivation.php
+[Pipeline] echo
+ Deserialization of Untrusted Data  + ligne = 112 + chemin = modules/wordpress/files/plugins/w3-total-cache/lib/Nusoap/class.wsdlcache.php
+[Pipeline] echo
+ Command Injection  + ligne = 508 + chemin = files/ganglia-web2/graph.php
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 1452 + chemin = tests/Database/Magic/ModelTest.php
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 51 + chemin = config.php
+[Pipeline] echo
+ insecureHash  + ligne = 115 + chemin = srv/salt/_modules/inventory.py
+[Pipeline] echo
+ Clear Text Logging  + ligne = 23 + chemin = vendor/github.com/pelletier/go-toml/doc_test.go
+[Pipeline] echo
+ Command Injection  + ligne = 63 + chemin = vendor/golang.org/x/sys/unix/syscall_freebsd_test.go
+[Pipeline] echo
+ Clear Text Logging  + ligne = 411 + chemin = vendor/golang.org/x/text/feature/plural/gen.go
+[Pipeline] echo
+ Server-Side Request Forgery (SSRF)  + ligne = 211 + chemin = vendor/golang.org/x/text/internal/gen/gen.go
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 67 + chemin = tests/secrets_and_cfgmap_test.go
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 198 + chemin = vendor/kubevirt.io/kubevirt/pkg/virtctl/imageupload/imageupload.go
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 1083 + chemin = vendor/golang.org/x/crypto/ssh/keys.go
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 54 + chemin = vendor/github.com/golang/glog/glog_file.go
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 41 + chemin = vendor/golang.org/x/net/http2/transport_test.go
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 53 + chemin = vendor/github.com/golang/protobuf/proto/testdata/golden_test.go
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 126 + chemin = vendor/golang.org/x/net/http2/h2demo/h2demo.go
+[Pipeline] echo
+ Command Injection  + ligne = 128 + chemin = vendor/github.com/gorilla/websocket/examples/command/main.go
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 1029 + chemin = internal/command/command_test.go
+[Pipeline] echo
+ Path Traversal  + ligne = 68 + chemin = scripts/affectedtests/affectedtests.go
+[Pipeline] echo
+ Information Exposure  + ligne = 10 + chemin = google/test-fixtures/cloudfunctions/secret_volumes_mount.js
+[Pipeline] echo
+ Insecure Data Transmission  + ligne = 20 + chemin = components/compliance-service/api/tests/19_rebuild_cache_spec.rb
+[Pipeline] echo
+ Cross-Site Request Forgery (CSRF)  + ligne = 57 + chemin = components/automate-workflow-web/test/e2e/mock_server.js
+[Pipeline] echo
+ Server-Side Request Forgery (SSRF)  + ligne = 76 + chemin = vendor/github.com/apparentlymart/go-textseg/textseg/make_test_tables.go
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 79 + chemin = main.go
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 304 + chemin = puppetmaster.go
+[Pipeline] echo
+ Path Traversal  + ligne = 37 + chemin = parse/parser.go
+[Pipeline] echo
+ Clear Text Logging  + ligne = 29 + chemin = types/lexer_test.go
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 163 + chemin = vendor/github.com/hashicorp/go-getter/v2/decompress_testing.go
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 65 + chemin = vendor/github.com/hashicorp/go-getter/v2/folder_storage.go
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 15 + chemin = pkg/rbac/token_test.go
+[Pipeline] echo
+ Command Injection  + ligne = 125 + chemin = g10k_puppetfile_test.go
+[Pipeline] echo
+ Path Traversal  + ligne = 77 + chemin = vendor/k8s.io/kube-openapi/test/integration/builder/main.go
+[Pipeline] echo
+ Command Injection  + ligne = 55 + chemin = vendor/github.com/golang/mock/mockgen/reflect.go
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 134 + chemin = cmd_serve.go
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 39 + chemin = feg/radius/src/modules/analytics/client_test.go
+[Pipeline] echo
+ TLSCertVerificationDisabled/test  + ligne = 657 + chemin = dp/cloud/python/magma/test_runner/tests/test_dp_with_orc8r.py
+[Pipeline] echo
+ Prototype Pollution  + ligne = 139 + chemin = nms/app/state/lte/SubscriberState.js
+[Pipeline] echo
+ Information Exposure  + ligne = 206 + chemin = nms/server/network/routes.js
+[Pipeline] echo
+ insecureHash  + ligne = 125 + chemin = lte/gateway/python/magma/pipelined/encoding.py
+[Pipeline] echo
+ Cross-Site Request Forgery (CSRF)  + ligne = 60 + chemin = nms/server/app.js
+[Pipeline] echo
+ Improper Input Validation  + ligne = 424 + chemin = nms/server/auth/express.js
+[Pipeline] echo
+ TLSCertVerificationDisabled  + ligne = 32 + chemin = xwf/gateway/deploy/roles/xwfm/files/xwfm_hostname.py
+[Pipeline] echo
+ Improper Input Validation  + ligne = 10791 + chemin = monitor/portal/static/portal/ace/js/worker-html.js
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 4 + chemin = monitor/portal/static/portal/SmartWizard/examples/ajaxtest.php
+[Pipeline] echo
+ Path Traversal  + ligne = 121 + chemin = monitor/portal/ansible_helper.py
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 4 + chemin = monitor/portal/static/portal/jqcron/demo/demo_3.php
+[Pipeline] echo
+ Deserialization of Untrusted Data  + ligne = 51 + chemin = app/modules/host/edit_host.py
+[Pipeline] echo
+ Prototype Pollution  + ligne = 8715 + chemin = desktop/apps/ansible/elfinder/static/elfinder/js/elfinder.full.js
+[Pipeline] echo
+ insecureHash  + ligne = 117 + chemin = desktop/apps/ansible/elfinder/volumes/filesystem.py
+[Pipeline] echo
+ Command Injection  + ligne = 205 + chemin = desktop/apps/ansible/tasks.py
+[Pipeline] echo
+ Information Exposure  + ligne = 11 + chemin = app/app.js
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 109 + chemin = reveal.js/plugin/markdown/markdown.js
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 41 + chemin = server/api/project/project.integration.js
+[Pipeline] echo
+ Improper Input Validation  + ligne = 251 + chemin = server/api/ansible/ansible.controller.js
+[Pipeline] echo
+ Spring Cross-Site Request Forgery (CSRF)  + ligne = 48 + chemin = src/main/java/com/glitterlabs/terraformui/controller/ProjectController.java
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 1998 + chemin = js/mappings.js
+[Pipeline] echo
+ Code Injection  + ligne = 570 + chemin = js/lib/lobipanel/lobipanel.js
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 151 + chemin = test/mocha.js
+[Pipeline] echo
+ Cross-Site Request Forgery (CSRF)  + ligne = 20 + chemin = src/monitor/app.js
+[Pipeline] echo
+ Improper Input Validation  + ligne = 27 + chemin = src/index.js
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 86 + chemin = middleware/src/index.js
+[Pipeline] echo
+ Server-Side Request Forgery (SSRF)  + ligne = 131 + chemin = api/index.js
+[Pipeline] echo
+ Code Injection  + ligne = 489 + chemin = packages/puppeteer-extra-plugin-recaptcha/src/content.ts
+[Pipeline] echo
+ Improper Input Validation  + ligne = 8 + chemin = content_script.js
+[Pipeline] echo
+ Path Traversal  + ligne = 69 + chemin = project-test/server.js
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 23 + chemin = lib/puppet_https.rb
+[Pipeline] echo
+ NoSQL Injection  + ligne = 25 + chemin = api/controllers/todoListController.js
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 10 + chemin = certinst.js/certinst.js
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 170 + chemin = www/core/lib/Wrench/Tests/Protocol/ProtocolTest.php
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 191 + chemin = www/core/lib/Wrench/Frame/HybiFrame.php
+[Pipeline] echo
+ SQL Injection  + ligne = 60 + chemin = src/main/java/com/boxupp/resources/PuppetModule.java
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 109 + chemin = slides/pulumi-tf-arm/plugin/markdown/markdown.js
+[Pipeline] echo
+ Denial of Service (DoS) through Nested GraphQL Queries  + ligne = 53 + chemin = examples/apolloService/app/App.js
+[Pipeline] echo
+ insecureHash  + ligne = 36 + chemin = CMDB_autoServer/api/views.py
+[Pipeline] echo
+ insecureHash/test  + ligne = 93 + chemin = mo_test/test.py
+[Pipeline] echo
+ Cross-Site Request Forgery (CSRF)  + ligne = 19 + chemin = trouble/tests.py
+[Pipeline] echo
+ Prototype Pollution  + ligne = 4520 + chemin = kkitadmin/statics/kkitadmin/plugins/kindeditor/kindeditor-all.js
+[Pipeline] echo
+ TLSCertVerificationDisabled  + ligne = 51 + chemin = kkitsalt/salt_mgr.py
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 275 + chemin = vendor/github.com/gorilla/websocket/client_server_test.go
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 27 + chemin = vendor/golang.org/x/crypto/ssh/client_auth_test.go
+[Pipeline] echo
+ Command Injection  + ligne = 6 + chemin = scripts/salt/formatAndMountDisk.py
+[Pipeline] echo
+ Deserialization of Untrusted Data  + ligne = 34 + chemin = doc/redis_test.py
+[Pipeline] echo
+ TLSCertVerificationDisabled  + ligne = 81 + chemin = dela/vm_image_scripts/csr-ca.py
+[Pipeline] echo
+ Insecure Data Transmission  + ligne = 12 + chemin = templates/gentoo-latest/definition.rb
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 3 + chemin = templates/windows-8-amd64/winrm.rb
+[Pipeline] echo
+ Insecure Data Transmission  + ligne = 5 + chemin = templates/archlinux-x86_64/definition.rb
+[Pipeline] echo
+ Path Traversal  + ligne = 52 + chemin = lib/java/dir2floppy.java
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 55 + chemin = hack-vendor/cmd/vendor-git-server/main.go
+[Pipeline] echo
+ insecureHash  + ligne = 122 + chemin = saltstack/hortonworks/salt/pre-warm/tmp/pre_warm_parcels.py
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 296 + chemin = library/ceph_key.py
+[Pipeline] echo
+ SQL Injection  + ligne = 611 + chemin = database/postgresql/postgresql_privs.py
+[Pipeline] echo
+ Command Injection  + ligne = 151 + chemin = utilities/logic/async_wrapper.py
+[Pipeline] echo
+ insecureHash/test  + ligne = 66 + chemin = tests/test_copy.py
+[Pipeline] echo
+ Cross-Site Request Forgery (CSRF)  + ligne = 16 + chemin = topics/flask_container_ci2/app/tests.py
+[Pipeline] echo
+ Cross-Site Request Forgery (CSRF)  + ligne = 12 + chemin = home/programming-languages/nodejs/task-008-web-app/whatabyte-portal/index.js
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 10 + chemin = home/programming-languages/go/task-055-simple-web-server/main.go
+[Pipeline] echo
+ Path Traversal  + ligne = 676 + chemin = roles/ansible-vsphere-management/scripts/pdns/lib/python2.7/site-packages/setuptools/package_index.py
+[Pipeline] echo
+ Server-Side Request Forgery (SSRF)  + ligne = 260 + chemin = roles/ansible-cacti/templates/scripts/ss_get_mysql_stats.php
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 340 + chemin = test/lib/ansible_test/_internal/containers.py
+[Pipeline] echo
+ Command Injection  + ligne = 25 + chemin = test/sanity/code-smell/rstcheck.py
+[Pipeline] echo
+ Path Traversal  + ligne = 69 + chemin = test/integration/targets/binary_modules/library/helloworld.go
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 23 + chemin = libraries/jwt.rb
+[Pipeline] echo
+ TLSCertVerificationDisabled  + ligne = 136 + chemin = files/default/agent.py
+[Pipeline] echo
+ Insecure Data Transmission  + ligne = 27 + chemin = cookbooks/elasticsearch/files/default/test/server_test.rb
+[Pipeline] echo
+ insecureHash  + ligne = 391 + chemin = mautrix_telegram/util/parallel_file_transfer.py
+[Pipeline] echo
+ Cross-Site Request Forgery (CSRF)  + ligne = 24 + chemin = test/views/test_query.py
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 70 + chemin = puppetboard/views/nodes.py
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 184 + chemin = puppetboard/views/reports.py
+[Pipeline] echo
+ insecureHash/test  + ligne = 768 + chemin = test/ansible_module_dynamic.py
+[Pipeline] echo
+ Command Injection  + ligne = 393 + chemin = versioneer.py
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 628 + chemin = src/member/tests.py
+[Pipeline] echo
+ Path Traversal  + ligne = 645 + chemin = lambda/setuptools/package_index.py
+[Pipeline] echo
+ Insecure Data Transmission  + ligne = 32 + chemin = vagrant-test/vagrant-test-library.rb
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 101 + chemin = mysql/spec/mysql_service/rhel/suse_113_service_55_multi_spec.rb
+[Pipeline] echo
+ TLSCertVerificationDisabled  + ligne = 19 + chemin = provisioning/roles/common/files/load_sample_app.py
+[Pipeline] echo
+ Deserialization of Untrusted Data  + ligne = 21 + chemin = puppet/api.py
+[Pipeline] echo
+ Use of Password Hash With Insufficient Computational Effort  + ligne = 21 + chemin = nodejs/eks/servicerole.ts
+[Pipeline] echo
+ insecureHash  + ligne = 29 + chemin = fabfile.py
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 165 + chemin = salt/zabbix/files/usr/lib/python2.6/site-packages/zabbix/zapi.py
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 182 + chemin = resources/execute.py
+[Pipeline] echo
+ SQL Injection  + ligne = 148 + chemin = system/groups.py
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 1567 + chemin = test/utils/systemctl.py
+[Pipeline] echo
+ Path Traversal  + ligne = 218 + chemin = provider/cmd/pulumi-gen-aws-native/main.go
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 81 + chemin = static/otherjs/dzhops.js
+[Pipeline] echo
+ TLSCertVerificationDisabled  + ligne = 20 + chemin = pulumi/python/kubernetes/applications/sirius/verify.py
+[Pipeline] echo
+ Server Information Exposure  + ligne = 89 + chemin = salt/ext/tornado/test/auth_test.py
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 40 + chemin = salt/ext/tornado/test/httpclient_test.py
+[Pipeline] echo
+ insecureHash/test  + ligne = 43 + chemin = tests/unit/modules/test_k8s.py
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 418 + chemin = salt/ext/tornado/test/web_test.py
+[Pipeline] echo
+ Command Injection  + ligne = 223 + chemin = salt/ext/tornado/autoreload.py
+[Pipeline] echo
+ Server Information Exposure  + ligne = 264 + chemin = app/views.py
+[Pipeline] echo
+ insecureHash  + ligne = 383 + chemin = waf-api/python/LetsEncrypt/utils/acme_client.py
+[Pipeline] echo
+ Insecure Data Transmission  + ligne = 81 + chemin = WAF_provisioning_code_samples/puppet_examples/aws/modules/wafloginforaws/files/waflogintoken.rb
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 45 + chemin = WAF_provisioning_code_samples/puppet_examples/azureinfra/modules/vrsinazure/files/vrsconfig.rb
+[Pipeline] echo
+ TLSCertVerificationDisabled  + ligne = 47 + chemin = waf-api/python/LetsEncrypt/utils/waf_direct_api.py
+[Pipeline] echo
+ Command Injection  + ligne = 75 + chemin = waf-api/python/LetsEncrypt/get_certificates.py
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 10 + chemin = java/xss/callbacks_snippets_.js
+[Pipeline] echo
+ SQL Injection  + ligne = 272 + chemin = pyth3/htb/gross_flask_vulns.py
+[Pipeline] echo
+ Path Traversal  + ligne = 57 + chemin = webshell/winter-wolf-shell.php
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 23 + chemin = go/go-kube/main_web.go
+[Pipeline] echo
+ Code Injection  + ligne = 813 + chemin = burp/webgoat8/JWT/jwt_tool_.py
+[Pipeline] echo
+ Server-Side Request Forgery (SSRF)  + ligne = 13 + chemin = webshell/webshell.php
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 60 + chemin = spec/commands/user_spec.rb
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 29 + chemin = roles/elastic.elasticsearch/test/integration/helpers/serverspec/xpack_upgrade_spec.rb
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 22 + chemin = test/integration/helpers/serverspec/spec_helper.rb
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 142 + chemin = src/supermarket/app/helpers/cookbooks_helper.rb
+[Pipeline] echo
+ Command Injection  + ligne = 31 + chemin = lib/chef-dk/command/exec.rb
+[Pipeline] echo
+ Code Injection  + ligne = 273 + chemin = lib/terrafying/generator.rb
+[Pipeline] echo
+ Insecure Data Transmission  + ligne = 7 + chemin = lib/public_address.rb
+[Pipeline] echo
+ Improper Input Validation  + ligne = 56 + chemin = docs/js/app.js
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 29 + chemin = lib/beaker/dsl/helpers/web_helpers.rb
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 59 + chemin = lib/vagrant-proxmox/action/create_vm.rb
+[Pipeline] echo
+ Improper Input Validation  + ligne = 56 + chemin = .puppet/modules/php/docs/js/app.js
+[Pipeline] echo
+ Improper Certificate Validation  + ligne = 63 + chemin = .puppet/modules/grafana/lib/puppet/provider/grafana.rb
+[Pipeline] echo
+ Insecure Data Transmission  + ligne = 56 + chemin = .puppet/modules/mysql/spec/spec_helper_acceptance.rb
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 27 + chemin = .puppet/modules/systemd/spec/defines/network_spec.rb
+[Pipeline] echo
+ Command Injection  + ligne = 34 + chemin = berks-cookbooks/apache2/definitions/apache_config.rb
+[Pipeline] echo
+ Regular Expression Denial of Service (ReDoS)  + ligne = 121 + chemin = test/unit/plugins/providers/docker/driver_compose_test.rb
+[Pipeline] echo
+ Use of Hardcoded Credentials  + ligne = 28 + chemin = test/unit/plugins/commands/winrm_config/command_test.rb
+[Pipeline] echo
+ Cross-site Scripting (XSS)  + ligne = 25 + chemin = app/assets/javascripts/settings/ldap-conn-test.js
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Retrieving vulnerabilities locations for snyk Dependencies)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/103566688
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/109762261
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/131635608
+[Pipeline] echo
+  XML External Entity (XXE) Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/25587884
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/259625493
+[Pipeline] echo
+  HTTP Request Smuggling + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/267784100
+[Pipeline] echo
+  Improper Access Control + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/285945044
+[Pipeline] echo
+  Denial of Service (DoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/311655106
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/33559367
+[Pipeline] echo
+  Arbitrary Code Execution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/36902203
+[Pipeline] echo
+  Denial of Service (DoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/38392543
+[Pipeline] echo
+  Arbitrary Code Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/ansible/53695197
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/terraform/131635608
+[Pipeline] echo
+  Denial of Service (DoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/terraform/146725455
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/terraform/255580025
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/terraform/4876092
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/terraform/6374766
+[Pipeline] echo
+  Denial of Service (DoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/terraform/73220574
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/terraform/78159422
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/chef/179636458
+[Pipeline] echo
+  Sandbox Bypass + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/chef/24141085
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/chef/5163713
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/chef/52369711
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/puppet/11346729
+[Pipeline] echo
+  Denial of Service (DoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/puppet/16810932
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/puppet/18594330
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/puppet/20883577
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/puppet/45119339
+[Pipeline] echo
+  Arbitrary Code Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/puppet/53552158
+[Pipeline] echo
+  Improper Access Control + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/puppet/59692146
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/vagrant/101947029
+[Pipeline] echo
+  Improper Access Control + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/vagrant/6519436
+[Pipeline] echo
+  XML External Entity (XXE) Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/vagrant/7977480
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/saltstack/159183248
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/saltstack/39109387
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/saltstack/80460439
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/java/saltstack/84631233
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/php/vagrant/11895722
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/php/saltstack/354846090
+[Pipeline] echo
+  Arbitrary Code Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/ansible/16021412
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/ansible/20246988
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/ansible/26974642
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/ansible/97513661
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/terraform/101683329
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/terraform/102220067
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/terraform/109790225
+[Pipeline] echo
+  Arbitrary Code Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/terraform/111411206
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/terraform/113539838
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/terraform/174820850
+[Pipeline] echo
+  Command Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/terraform/289366340
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/terraform/82420013
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/terraform/92349608
+[Pipeline] echo
+  Denial of Service (DoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/1027954
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/110689695
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/150972989
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/165327711
+[Pipeline] echo
+  Improper Input Validation + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/193111583
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/245826046
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/254505087
+[Pipeline] echo
+  Denial of Service (DoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/267974704
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/33154445
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/4442485
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/44987187
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/54152264
+[Pipeline] echo
+  Denial of Service (DoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/5976668
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/7346865
+[Pipeline] echo
+  Improper Input Validation + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/chef/74962515
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/puppet/100556016
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/puppet/100601857
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/puppet/105864784
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/puppet/155733693
+[Pipeline] echo
+  XML External Entity (XXE) Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/puppet/258936782
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/puppet/77879861
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/puppet/779514
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/vagrant/29260509
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/vagrant/31123790
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/vagrant/32092518
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/vagrant/41057370
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/vagrant/46947797
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/vagrant/8784312
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/pulumi/140763716
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/pulumi/141207035
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/pulumi/158938581
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/pulumi/196043129
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/pulumi/213089026
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/pulumi/221280571
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/pulumi/315689653
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/saltstack/115997294
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/saltstack/25357406
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/saltstack/39116866
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/saltstack/41178667
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/saltstack/63534079
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/saltstack/64652075
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/javascript/saltstack/89699313
+[Pipeline] echo
+  XML External Entity (XXE) Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/shell/chef/9625581
+[Pipeline] echo
+  XML External Entity (XXE) Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/shell/puppet/16657636
+[Pipeline] echo
+  Improper Input Validation + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/shell/puppet/8671909
+[Pipeline] echo
+  XML External Entity (XXE) Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/shell/vagrant/14174479
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/shell/pulumi/301744051
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/ansible/24109199
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/ansible/27195864
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/ansible/30925564
+[Pipeline] echo
+  Improper Input Validation + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/ansible/58152695
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/ansible/74197456
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/terraform/106306056
+[Pipeline] echo
+  HTTP Header Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/terraform/413351211
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/terraform/86997096
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/chef/1361048
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/chef/151951969
+[Pipeline] echo
+  Buffer Overflow + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/chef/212804887
+[Pipeline] echo
+  HTTP Request Smuggling + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/chef/3720903
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/chef/388517773
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/chef/50676845
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/chef/52293122
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/chef/53090840
+[Pipeline] echo
+  XML External Entity (XXE) Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/chef/843358
+[Pipeline] echo
+  Buffer Overflow + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/puppet/201203486
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/puppet/31679766
+[Pipeline] echo
+  Information Exposure + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/puppet/81785041
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/vagrant/16321704
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/vagrant/3441569
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/pulumi/174706117
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/saltstack/125184170
+[Pipeline] echo
+  Prototype Pollution + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/saltstack/42087169
+[Pipeline] echo
+  Directory Traversal + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/python/saltstack/66900215
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/powershell/ansible/266658222
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/powershell/vagrant/151963675
+[Pipeline] echo
+  Arbitrary Code Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/ansible/39156591
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/ansible/4358325
+[Pipeline] echo
+  Remote Code Execution (RCE) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/terraform/124937251
+[Pipeline] echo
+  XML External Entity (XXE) Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/terraform/22621179
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/terraform/229780263
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/terraform/35562960
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/chef/108278
+[Pipeline] echo
+  XML External Entity (XXE) Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/chef/17303641
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/chef/2796081
+[Pipeline] echo
+  Cross-site Scripting (XSS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/chef/3720904
+[Pipeline] echo
+  Improper Input Validation + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/puppet/3598441
+[Pipeline] echo
+  Arbitrary Code Injection + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/vagrant/13350355
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/pulumi/195745298
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/saltstack/108428401
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/saltstack/108434150
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/saltstack/108440934
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/saltstack/108443447
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/saltstack/108445506
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/saltstack/108448012
+[Pipeline] echo
+  Deserialization of Untrusted Data + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/saltstack/49065332
+[Pipeline] echo
+  Regular Expression Denial of Service (ReDoS) + chemin = /Users/aicha.war/.jenkins/workspace/iactechnologies@4/ruby/saltstack/80650530
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Retrieving vulnerabilities locations (files and lines) for Horusec)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Horusec and Snyk Code Vulnerability Match)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+ Use of Hardcoded Credentials  + intersec in code = 1
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Horusec and Snyk Dependencies Vulnerability Match)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
