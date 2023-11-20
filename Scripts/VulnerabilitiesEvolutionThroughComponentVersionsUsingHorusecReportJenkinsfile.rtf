@@ -1,0 +1,667 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2707
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+def ANSIBLE = 'https://github.com/ansible/ansible.git'\
+def CHEF = 'https://github.com/chef/chef.git'\
+def PUPPET = 'https://github.com/puppetlabs/puppet.git'\
+def TERRAFORM = 'https://github.com/hashicorp/terraform.git'\
+def VAGRANT = 'https://github.com/hashicorp/vagrant.git'\
+\
+def TOOLS=['ansible','terraform','chef','puppet','vagrant']\
+def VERSIONS=['v2.0.0-0.1.alpha1','v1.0','v1.0.0','v0.1.0','v18.0.0','v17.0.0','8.0.0','7.0.0','v2.0.0','v1.0.0']\
+\
+def SCRIPTS=['https://github.com/geerlingguy/ansible-for-devops.git','https://github.com/iwf-web/vagrant-scripts.git','https://github.com/ahzhezhe/terraform-generator.git','https://github.com/ansible-collections/community.general.git','https://github.com/tropyx/NetBeansPuppet.git']\
+def SCRIPTSVERSIONS=['2.0','1.0','3.0.0','2.0.4','v4.0.0','v3.0.0','7.0.0','6.0.0','v2.0.0','v1.2']\
+\
+def EXTRA=['https://github.com/ricardozanini/soccer-stats.git','https://github.com/ansible/ansible-runner.git','https://github.com/hashicorp/terraform-provider-azurerm.git','https://github.com/chef/cookstyle.git','https://github.com/pulumi/pulumi-datadog.git']\
+def EXTRAVERSIONS=['v0.0.2','v0.0.1','2.0.0','1.0.1','v3.0.0','v2.0.0','v7.0.0','v6.0.0','v4.0.0','v3.0.0']\
+\
+def textDefault\
+def textV1 \
+def textV2\
+def vulnDefault =[]\
+def vulnV1 =[]\
+def vulnV2=[]\
+def lineDefault =[]\
+def lineV1 =[]\
+def lineV2=[]\
+def pathDefault=[]\
+def pathV1=[]\
+def pathV2=[]\
+def xpath=[]\
+def xcode=[]\
+def xline=[]\
+def xpath2=[]\
+def xcode2=[]\
+def xline2=[]\
+def tab=[] \
+def toolDefText\
+def toolsReport\
+def scriptsReport\
+def extrasReport\
+def intermediate=[]\
+def index\
+def indexDefault=[]\
+def indexV1=[]\
+def indexV2=[]\
+   \
+   \
+\
+pipeline\{\
+\
+   agent any\
+  \
+   stages\{\
+\
+    stage('Retrieving Horusec reports by component type') \{\
+      steps \{\
+             script \{\
+                 \
+                 def content = new File("/Users/aicha.war/Downloads/HorusecSampleComponentsTesting.txt").text\
+                 \
+                 intermediate = content.split("Scan of IaC scripts with Horusec")\
+                 toolsReport = intermediate[0]\
+                 \
+                 intermediate = intermediate[1].split("Scan of IaC extra projects with Horusec")\
+                 scriptsReport = intermediate[0]\
+                 extrasReport = intermediate[1]\
+                    \
+             \}\
+          \}\
+          \
+       \}\
+       \
+\
+    stage('Retrieving tools vulnerabilities and files') \{\
+      steps \{\
+             script \{\
+                 \
+                     def tmp\
+                 for (tool in TOOLS)\{\
+                        index = TOOLS.findIndexOf \{ it == tool \}\
+                        if (index < 4) \{\
+                            intermediate = toolsReport.split("=============== $\{TOOLS[index+1]\} VERSION DEFAULT ===================")\
+                            toolDefText = intermediate[0]\
+                            tmp = intermediate[1]\
+                        \}else\{\
+                            toolDefText = tmp\
+                        \}\
+                        \
+                        intermediate = toolDefText.split("======== $\{tool\} VERSION")\
+                        if(index<4)\{\
+                            textDefault = intermediate[1]\
+                            textV1 = intermediate[2]\
+                            textV2 = intermediate[3]\
+                        \}else\{\
+                            textDefault = intermediate[0]\
+                            textV1 = intermediate[1]\
+                            textV2 = intermediate[2]\
+                        \}\
+                        \
+                        \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR DEFAULT VERSION\
+                        def content = textDefault.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexDefault.add(l.minus("Line: "))\
+                               \
+                               if (l.contains("File: ")) pathDefault.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnDefault.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineDefault.add(tab[tab.size() - 1])\
+                                \}\
+                        \}\
+                        \
+                        for(key in 0..pathDefault.size()-2)\{\
+                            if (pathDefault[key].equals(pathDefault[key + 1]) && indexDefault[key].equals(indexDefault[key + 1]))\{\
+                                pathDefault[key]=null\
+                            \}\
+                        \}\
+                    \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR PRECEDENT VERSION 1\
+                        content = textV1.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexV1.add(l.minus("Line: "))\
+                               \
+                               if (l.contains("File: ")) pathV1.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnV1.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineV1.add(tab[tab.size() - 1])\
+                                \}\
+                        \}\
+                      \
+                        \
+                        for(key in 0..pathV1.size()-2)\{\
+                            if (pathV1[key].equals(pathV1[key + 1]) && indexV1[key].equals(indexV1[key + 1]))\{\
+                                pathV1[key]=null\
+                            \}\
+                        \}\
+                       \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR PRECEDENT VERSION 2\
+                        content = textV2.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexV2.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathV2.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnV2.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineV2.add(tab[tab.size() - 1])\
+                                \}\
+                                \
+                     \}\
+                        for(key in 0..pathV2.size()-2)\{\
+                            if (pathV2[key].equals(pathV2[key + 1]) && indexV2[key].equals(indexV2[key + 1]))\{\
+                                pathV2[key]=null\
+                            \}\
+                        \}\
+                        \
+                 \}\
+            \}\
+        \}\
+    \}\
+       \
+\
+    stage('Listing tools vulnerabilities and locations from different versions') \{\
+      steps \{\
+             script \{\
+                 \
+                 for (tool in TOOLS)\{\
+                     \
+                        index = TOOLS.findIndexOf \{ it == tool \}\
+                        def i = 2*index\
+                        \
+                        echo "=========  $\{tool\} DEFAULT ============"\
+                            for (item in pathDefault)\{\
+                                if(item!=null && item.contains("$\{tool\}/$\{index\}"))\{\
+                                    def ind = pathDefault.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineDefault[ind]\} + Counted = $\{lineDefault.count(lineDefault[ind])\} + Path = $\{item\} + Line = $\{indexDefault[ind]\}"\
+                                \}\
+                            \}\
+                        \
+                        echo "=========  $\{tool\} VERSION $\{VERSIONS[i]\} ============"\
+                        \
+                            for (item in pathV1)\{\
+                                if(item!=null && item.contains("$\{tool\}/$\{EXTRAVERSIONS[i]\}"))\{\
+                                    def ind = pathV1.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineV1[ind]\} + Path = $\{item\} + Line = $\{indexV1[ind]\}"\
+                                \}\
+                            \}\
+                        \
+                        \
+                        echo "=========  $\{tool\} VERSION $\{VERSIONS[i+1]\} ============"\
+                        \
+                        for (item in pathV2)\{\
+                                if(item!=null && item.contains("$\{tool\}/$\{EXTRAVERSIONS[i+1]\}"))\{\
+                                    def ind = pathV2.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineV2[ind]\} + Path = $\{item\} + Line = $\{indexV2[ind]\}"\
+                                \}\
+                            \}\
+                            \
+                 \}\
+                 \
+                 vulnDefault=[]\
+                 vulnV1=[]\
+                 vulnV2=[]\
+                 pathDefault=[]\
+                 pathV1=[]\
+                 pathV2=[]\
+                 indexDefault=[]\
+                 indexV1=[]\
+                 indexV2=[]\
+                 lineDefault=[]\
+                 lineV1=[]\
+                 lineV2=[]\
+            \}\
+        \}\
+    \}\
+    \
+    /*stage('Retrieving scripts vulnerabilities and files') \{\
+      steps \{\
+             script \{\
+                 def tmp\
+                 for (script in SCRIPTS)\{\
+                     \
+                        index = SCRIPTS.findIndexOf \{ it == script \}\
+                        \
+                        if (index < 4) \{\
+                            intermediate = extrasReport.split("====== $\{SCRIPTS[index+1]\} VERSION DEFAULT ======")\
+                            toolDefText = intermediate[0]\
+                            tmp = intermediate[1]\
+                        \}else\{\
+                            toolDefText = tmp\
+                        \}\
+                        \
+                        intermediate = toolDefText.split("====== $\{script\} VERSION")\
+                        if(index<4)\{\
+                            textDefault = intermediate[1]\
+                            textV1 = intermediate[2]\
+                            textV2 = intermediate[3]\
+                        \}else\{\
+                            textDefault = intermediate[0]\
+                            textV1 = intermediate[1]\
+                            textV2 = intermediate[2]\
+                        \}\
+                        \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR DEFAULT VERSION\
+                        def content = textDefault.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexDefault.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathDefault.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnDefault.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineDefault.add(tab[tab.size() - 1])\
+                                \}\
+                        \}\
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR PRECEDENT VERSION 1\
+                        content = textV1.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexV1.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathV1.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnV1.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineV1.add(tab[tab.size() - 1])\
+                                \}\
+                        \}\
+                      \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR PRECEDENT VERSION 2\
+                        content = textV2.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexV2.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathV2.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnV2.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineV2.add(tab[tab.size() - 1])\
+                                \}\
+                                \
+                     \}\
+                        \
+                        \
+                 \}\
+       \}\
+    \}\
+        \
+    \}\
+\
+    stage('Listing scripts vulnerabilities and locations from different versions') \{\
+      steps \{\
+             script \{\
+                 \
+                 for (script in SCRIPTS)\{\
+                     \
+                        index = SCRIPTS.findIndexOf \{ it == script \}\
+                        def i = 2*index\
+                        \
+                        def scriptFolder1 = SCRIPTS[index].split('/')\
+                        def scriptFolder2 = scriptFolder1[scriptFolder1.size() -1].minus('.git')\
+                        \
+                        echo "=========  $\{script\} DEFAULT ============"\
+                            for (item in pathDefault)\{\
+                                if(item!=null && item.contains("scripts/$\{scriptFolder2\}/$\{index\}"))\{\
+                                    def ind = pathDefault.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineDefault[ind]\} + Path = $\{item\} + Line = $\{indexDefault[ind]\}"\
+                                \}\
+                            \}\
+                        \
+                        echo "=========  $\{script\} VERSION $\{SCRIPTSVERSIONS[i]\} ============"\
+                        \
+                            for (item in pathV1)\{\
+                                if(item!=null && item.contains("scripts/$\{scriptFolder2\}/$\{SCRIPTSVERSIONS[i]\}"))\{\
+                                    def ind = pathV1.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineV1[ind]\} + Path = $\{item\} + Line = $\{indexV1[ind]\}"\
+                                \}\
+                            \}\
+                        \
+                        \
+                        echo "=========  $\{script\} VERSION $\{SCRIPTSVERSIONS[i+1]\} ============"\
+                        \
+                        for (item in pathV2)\{\
+                                if(item!=null && item.contains("scripts/$\{scriptFolder2\}/$\{SCRIPTSVERSIONS[i]\}"))\{\
+                                    def ind = pathV2.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineV2[ind]\} + Path = $\{item\} + Line = $\{indexV2[ind]\}"\
+                                \}\
+                            \}\
+                            \
+                 \}\
+                 \
+                 vulnDefault=[]\
+                 vulnV1=[]\
+                 vulnV2=[]\
+                 pathDefault=[]\
+                 pathV1=[]\
+                 pathV2=[]\
+                 indexDefault=[]\
+                 indexV1=[]\
+                 indexV2=[]\
+                 lineDefault=[]\
+                 lineV1=[]\
+                 lineV2=[]\
+            \}\
+        \}\
+    \}*/\
+    \
+    stage('Retrieving scripts vulnerabilities and files') \{\
+      steps \{\
+             script \{\
+                 def tmp\
+                 for (script in SCRIPTS)\{\
+                     \
+                        index = SCRIPTS.findIndexOf \{ it == script \}\
+                        \
+                        if (index < 4) \{\
+                            intermediate = scriptsReport.split("======== $\{SCRIPTS[index+1]\} VERSION DEFAULT ========")\
+                            toolDefText = intermediate[0]\
+                            tmp = intermediate[1]\
+                        \}else\{\
+                            toolDefText = tmp\
+                        \}\
+                        \
+                        intermediate = toolDefText.split("======== $\{script\} VERSION")\
+                        if(index<4)\{\
+                            textDefault = intermediate[1]\
+                            textV1 = intermediate[2]\
+                            textV2 = intermediate[3]\
+                        \}else\{\
+                            textDefault = intermediate[0]\
+                            textV1 = intermediate[1]\
+                            textV2 = intermediate[2]\
+                        \}\
+                        \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR DEFAULT VERSION\
+                        def content = textDefault.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexDefault.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathDefault.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnDefault.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineDefault.add(tab[tab.size() - 1])\
+                                \}\
+                        \}\
+                        \
+                        for(key in 0..pathDefault.size()-2)\{\
+                            if (pathDefault[key].equals(pathDefault[key + 1]) && indexDefault[key].equals(indexDefault[key + 1]))\{\
+                                pathDefault[key]=null\
+                            \}\
+                        \}\
+                        \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR PRECEDENT VERSION 1\
+                        content = textV1.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexV1.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathV1.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnV1.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineV1.add(tab[tab.size() - 1])\
+                                \}\
+                        \}\
+                        \
+                        for(key in 0..pathV1.size()-2)\{\
+                            if (pathV1[key].equals(pathV1[key + 1]) && indexV1[key].equals(indexV1[key + 1]))\{\
+                                pathV1[key]=null\
+                            \}\
+                        \}\
+                      \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR PRECEDENT VERSION 2\
+                        content = textV2.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexV2.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathV2.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnV2.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineV2.add(tab[tab.size() - 1])\
+                                \}\
+                                \
+                     \}\
+                        for(key in 0..pathV2.size()-2)\{\
+                            if (pathV2[key].equals(pathV2[key + 1]) && indexV2[key].equals(indexV2[key + 1]))\{\
+                                pathV2[key]=null\
+                            \}\
+                        \}                    \
+                        \
+                 \}\
+            \}\
+      \}\
+    \}\
+\
+    stage('Listing scripts vulnerabilities and locations from different versions') \{\
+      steps \{\
+             script \{\
+                 \
+                 for (script in SCRIPTS)\{\
+                     \
+                        index = SCRIPTS.findIndexOf \{ it == script \}\
+                        def i = 2*index\
+                        \
+                        def scriptFolder1 = SCRIPTS[index].split('/')\
+                        def scriptFolder2 = scriptFolder1[scriptFolder1.size() -1].minus('.git')\
+                        \
+                        echo "=========  $\{script\} DEFAULT ============"\
+                            for (item in pathDefault)\{\
+                                if(item!=null && item.contains("scripts/$\{scriptFolder2\}/$\{index\}"))\{\
+                                    def ind = pathDefault.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineDefault[ind]\} + Path = $\{item\} + Line = $\{indexDefault[ind]\}"\
+                                \}\
+                            \}\
+                        \
+                        echo "=========  $\{script\} VERSION $\{SCRIPTSVERSIONS[i]\} ============"\
+                        \
+                            for (item in pathV1)\{\
+                                if(item!=null && item.contains("scripts/$\{scriptFolder2\}/$\{SCRIPTSVERSIONS[i]\}"))\{\
+                                    def ind = pathV1.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineV1[ind]\} + Path = $\{item\} + Line = $\{indexV1[ind]\}"\
+                                \}\
+                            \}\
+                        \
+                        \
+                        echo "=========  $\{script\} VERSION $\{SCRIPTSVERSIONS[i+1]\} ============"\
+                        \
+                        for (item in pathV2)\{\
+                                if(item!=null && item.contains("scripts/$\{scriptFolder2\}/$\{SCRIPTSVERSIONS[i+1]\}"))\{\
+                                    def ind = pathV2.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineV2[ind]\} + Path = $\{item\} + Line = $\{indexV2[ind]\}"\
+                                \}\
+                            \}\
+                            \
+                 \}\
+                 vulnDefault=[]\
+                 vulnV1=[]\
+                 vulnV2=[]\
+                 pathDefault=[]\
+                 pathV1=[]\
+                 pathV2=[]\
+                 indexDefault=[]\
+                 indexV1=[]\
+                 indexV2=[]\
+                 lineDefault=[]\
+                 lineV1=[]\
+                 lineV2=[]\
+            \}\
+        \}\
+    \}\
+    \
+    stage('Retrieving extra projects vulnerabilities and files') \{\
+      steps \{\
+             script \{\
+                 def tmp\
+                 for (extra in EXTRA)\{\
+                     \
+                        index = EXTRA.findIndexOf \{ it == extra \}\
+                        \
+                        if (index < 4) \{\
+                            intermediate = extrasReport.split("======== $\{EXTRA[index+1]\} VERSION DEFAULT ========")\
+                            toolDefText = intermediate[0]\
+                            tmp = intermediate[1]\
+                        \}else\{\
+                            toolDefText = tmp\
+                        \}\
+                        \
+                        intermediate = toolDefText.split("======== $\{extra\} VERSION")\
+                        if(index<4)\{\
+                            textDefault = intermediate[1]\
+                            textV1 = intermediate[2]\
+                            textV2 = intermediate[3]\
+                        \}else\{\
+                            textDefault = intermediate[0]\
+                            textV1 = intermediate[1]\
+                            textV2 = intermediate[2]\
+                        \}\
+                        \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR DEFAULT VERSION\
+                        def content = textDefault.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexDefault.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathDefault.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnDefault.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineDefault.add(tab[tab.size() - 1])\
+                                \}\
+                        \}\
+                        for(key in 0..pathDefault.size()-2)\{\
+                            if (pathDefault[key].equals(pathDefault[key + 1]) && indexDefault[key].equals(indexDefault[key + 1]))\{\
+                                pathDefault[key]=null\
+                            \}\
+                        \}   \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR PRECEDENT VERSION 1\
+                        content = textV1.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexV1.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathV1.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnV1.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineV1.add(tab[tab.size() - 1])\
+                                \}\
+                        \}\
+                        for(key in 0..pathV1.size()-2)\{\
+                            if (pathV1[key].equals(pathV1[key + 1]) && indexV1[key].equals(indexV1[key + 1]))\{\
+                                pathV1[key]=null\
+                            \}\
+                        \}   \
+                      \
+                        // WE ARE GETTING THE VULNERABILITIES AND THEIR LOCATIONS (FILES) FOR PRECEDENT VERSION 2\
+                        content = textV2.split( '\\n' )\
+                        for (l in content)\{\
+                            \
+                               if (l.contains("Line: ")) indexV2.add(l.minus("Line: "))\
+                            \
+                               if (l.contains("File: ")) pathV2.add(l.minus("File: "))\
+                               \
+                                if (l.contains("Code: ")) vulnV2.add(l.minus("Code: "))\
+                                \
+                                if (l.contains("Possible vulnerability detected: "))\{\
+                                   tab = l.split(":")\
+                                   lineV2.add(tab[tab.size() - 1])\
+                                \}\
+                                \
+                     \}\
+                        for(key in 0..pathV2.size()-2)\{\
+                            if (pathV2[key].equals(pathV2[key + 1]) && indexV2[key].equals(indexV2[key + 1]))\{\
+                                pathV2[key]=null\
+                            \}\
+                        \}                       \
+                        \
+                 \}\
+            \}\
+      \}\
+    \}\
+\
+    stage('Listing extra projects vulnerabilities and locations from different versions') \{\
+      steps \{\
+             script \{\
+                 \
+                 for (extra in EXTRA)\{\
+                     \
+                        index = EXTRA.findIndexOf \{ it == extra \}\
+                        def i = 2*index\
+                        \
+                        def extraFolder = EXTRA[index].split('/')\
+                        def extraFolder2 = extraFolder[extraFolder.size() -1].minus('.git')\
+                        \
+                        echo "=========  $\{extra\} DEFAULT ============"\
+                            for (item in pathDefault)\{\
+                                if(item!=null && item.contains("extra/$\{extraFolder2\}/$\{index\}"))\{\
+                                    def ind = pathDefault.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineDefault[ind]\} + Path = $\{item\} + Line = $\{indexDefault[ind]\}"\
+                                \}\
+                            \}\
+                        \
+                        echo "=========  $\{extra\} VERSION $\{EXTRAVERSIONS[i]\} ============"\
+                        \
+                            for (item in pathV1)\{\
+                                if(item!=null && item.contains("extra/$\{extraFolder2\}/$\{EXTRAVERSIONS[i]\}"))\{\
+                                    def ind = pathV1.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineV1[ind]\} + Path = $\{item\} + Line = $\{indexV1[ind]\}"\
+                                \}\
+                            \}\
+                        \
+                        \
+                        echo "=========  $\{extra\} VERSION $\{EXTRAVERSIONS[i+1]\} ============"\
+                        \
+                        for (item in pathV2)\{\
+                                if(item!=null && item.contains("extra/$\{extraFolder2\}/$\{EXTRAVERSIONS[i+1]\}"))\{\
+                                    def ind = pathV2.findIndexOf \{ it == item \}\
+                                    echo "Vulnerability = $\{lineV2[ind]\} + Path = $\{item\} + Line = $\{indexV2[ind]\}"\
+                                \}\
+                            \}\
+                            \
+                 \}\
+            \}\
+        \}\
+    \}\
+      \
+   \}\
+\}   }
