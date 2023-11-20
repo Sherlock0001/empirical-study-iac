@@ -1,0 +1,328 @@
+def LANGUAGES2=['java','php','go','javascript','shell','python','powershell','ruby']
+def LANGUAGES=[2,3]
+def snykvulnerabilities = ['Improper Access Control','Path Traversal','Sandbox Bypass','Privacy Leak','Cross-Site Request Forgery',
+                    'Directory Traversal','Use of Password Hash With Insufficient Computational Effort',
+                    'Improper Certificate Validation','Hardcoded Secret Transmission of Sensitive Information',
+                    'Information Exposure','insecureHash','TLSCertVerificationDisabled','Insecure Data Transmission',
+                    'Arbitrary Code Execution','SQL Injection','Remote Code Execution','Command Injection',
+                    'XML External Entity','Cross-site Scripting','HTTP Header Injection','Code Injection',
+                    'Improper Input Validation','Regular Expression Injection',' Out-of-bounds Read','Prototype Pollution',
+                    'HTTP Request Smuggling','Buffer Overflow','Default service account used',
+                    'Credentials are configured via provider attributes','Hardcoded admin password in VM configuration',
+                    'S3 restrict public bucket control is disabled','S3 block public policy control is disabled',
+                    'S3 block public acls control is disabled','Privileged container in deployment','S3 ignore public acls control is disabled',
+                    'Rolebinding or clusterrolebinding is using a pre-defined role','Role with too wide permissions','insecureAPI',
+                    'insecureXmlParser','Use of Hardcoded Credentials','Returns Password','Deserialization of Untrusted Data',
+                    'Resources Downloaded over Insecure Protocol','Regular Expression Denial of Service','Clear Text Logging',
+                    'Improper Output Neutralization for Logs','Denial of Service','Server-Side Request Forgery']
+                     
+def horusecvulnerabilities=[]
+def snykcode =[]
+def snykcodehorusec =[]
+def snykdephorusec =[]
+def snykiachorusec =[]
+def intersec=[][]
+def indexes=[]
+def path=[]
+def path2=[]
+def err=[]
+def path3=[]
+def line=[]
+def line2=[]
+def line3=[]
+def xpath=[]
+def xline=[]
+def xcode=[]
+def xerr=[]
+def intermediate=[]
+def index
+def index2
+   
+import groovy.json.JsonSlurperClassic
+
+pipeline{
+
+   agent any
+  
+   stages{
+
+    stage('Retrieving vulnerabilities locations (files and lines) for snyk Code') {
+      steps {
+             script {
+                 def content=""
+                 for(lang in LANGUAGES2){
+                   for(i in LANGUAGES){
+                   content = new File("/Users/aicha.war/Downloads/${lang}${i}.txt").text.readLines()
+                    for(l in content){
+                       for(vulner in snykvulnerabilities){
+                         
+                       if (l.contains(vulner)){
+                           index = content.findIndexOf { it == l }
+                           def vul = l.split("]")
+                           def pathAndLine = content[index + 1]
+                           intermediate = pathAndLine.split(":")
+                           def tab = intermediate[intermediate.size() - 1].split(" ")
+                           def tabsize = tab.size()
+                           if(tabsize > 1){
+                               def ligne = tab[tabsize - 1]
+                               def chemin = tab[tabsize - 3]
+                               line.add(ligne)
+                               path.add(chemin.minus(","))
+                               snykcode.add(vul[vul.size() - 1])
+                           }
+                       }  
+                     }
+                 
+                 }
+             }
+          }
+          
+              xpath = path.unique (false)
+              for(item in xpath){
+                   for(item2 in path){
+                       if(item.equals(item2)){
+                          index = path.findIndexOf { it == item }
+                          xline.add(line[index])
+                          xcode.add(snykcode[index])
+                          break
+                       }
+                   }
+               }
+                       
+               path = xpath
+               line = xline
+               snykcode = xcode
+                xpath=[]
+                xline=[]
+                xcode=[]
+                   
+               for(item in path){
+                          index = path.findIndexOf { it == item }
+                          echo "${snykcode[index]} + ligne = ${line[index]} + chemin = ${item}"
+                }
+       }
+    }
+    }
+
+    stage('Retrieving vulnerabilities locations for snyk Dependencies') {
+      steps {
+             script {
+                 def content=""
+                 def chemin=""
+                 def ligne=""
+                 def tab=[]
+                 content = new File("/Users/aicha.war/Downloads/Manifest.txt").text.readLines()
+                for(l in content){
+                    for(vulner in snykvulnerabilities){
+                       if(l.contains("git config --file")){
+                           tab = l.split(" ")
+                           chemin = tab[tab.size() - 3].minus("/.git/config")
+                       }  
+                       if (l.contains("Description:") && l.contains(vulner)){
+                               line3.add(l.minus("Description: "))
+                               path3.add(chemin)
+                       }  
+                     }
+                 
+                 }
+                   xpath = path3.unique(false)
+                   
+                   for(item in xpath){
+                       for(item2 in path3){
+                           if(item.equals(item2)){
+                              index = path3.findIndexOf { it == item }
+                              xline.add(line3[index])
+                              break
+                           }
+                       }
+                   }
+                   path3 = xpath
+                   line3 = xline
+                    xpath=[]
+                    xline=[]
+                   
+       }
+    }
+    }
+    
+    stage('Retrieving vulnerabilities locations (files and lines) for Horusec') {
+      steps {
+             script {
+                 def ligne=""
+                 def chemin=""
+                 def erreur=""
+                 def content=""
+                 def vulnType=""
+                 for(lang in LANGUAGES2){
+                     content = new File("/Users/aicha.war/Downloads/${lang}project.txt").text.readLines()
+                     for(l in content){
+                               
+                                if (l.contains("Line: ")) ligne = l.minus("Line: ")
+                                
+                                if (l.contains("File: ")) chemin = l.minus("File: ")
+                                
+                                if (l.contains("Code: ")) erreur = l.minus("Code: ")
+                                
+                                if (l.contains("Possible vulnerability detected: ")){
+                                       if(l.contains("Privileged Container")) vulnType="Privileged container in deployment"
+                                       if(l.contains("Hard-coded") || l.contains("Password"))  vulnType="Use of Hardcoded Credentials"
+                                       if(l.contains("Secret") || l.contains("ID")) vulnType="Hardcoded Secret Transmission of Sensitive Information"
+                                       if(l.contains("Asymmetric Private Key")) vulnType="Improper Certificate Validation"
+                                       if(l.contains("No use weak random number generator")) vulnType="Use of Password Hash With Insufficient Computational Effort"
+                                   if(!vulnType.equals("")){
+                                       line2.add(ligne)
+                                       path2.add(chemin)
+                                       err.add(erreur)
+                                       horusecvulnerabilities.add(vulnType)
+                                       vulnType=""
+                                   }
+                                }
+                     
+                     }
+          }/*
+           xerr =  err.unique(false)
+           for(item in xerr){
+              
+              for (item2 in err){
+                  if(item.equals(item2)){
+                      index = err.findIndexOf { it == item2 }
+                      xcode.add(horusecvulnerabilities[index])
+                      xpath.add(path2[index])
+                      xline.add(line2[index])
+                      break
+                   }
+               }
+           }
+           line2 = xline
+           path2 = xpath
+           horusecvulnerabilities = xcode/*
+            xpath = path2.unique (false)
+              for(item in xpath){
+                   for(item2 in path2){
+                       if(item.equals(item2)){
+                          index = path2.findIndexOf { it == item }
+                          xline.add(line2[index])
+                          xcode.add(horusecvulnerabilities[index])
+                          break
+                       }
+                   }
+               }
+                       
+               path2 = xpath
+               line2 = xline
+               horusecvulnerabilities = xcode
+                xpath=[]
+                xline=[]
+                xcode=[]
+                   
+               for(item in path2){
+                          index = path2.findIndexOf { it == item }
+                          echo "${horusecvulnerabilities[index]} + ligne = ${line2[index]} + chemin = ${item}"
+                }*/
+       }
+    }
+        
+    }
+    
+    stage('Horusec and Snyk Code Vulnerability Match') {
+      steps {
+             script {
+                 for (item2 in path2){
+                     for(item in path){
+                         if (item2.contains(item)){
+                            index = path.findIndexOf { it == item }
+                            index2 = path2.findIndexOf { it == item2 }
+                            if(line[index] == line2[index2]){
+                              snykcodehorusec.add(snykcode[index])
+                              break
+                            }
+                         }
+                     }
+                     
+                 }
+                 
+                 for(item in snykcodehorusec){
+                     def occ = snykcodehorusec.count(item)
+                     echo "${item} + intersec in code = ${occ}"
+                 }
+            }
+      }
+    }
+    
+    stage('Horusec and Snyk Dependencies Vulnerability Match') {
+      steps {
+             script {
+                 
+                 for (item2 in path2){
+                     for(item in path3){
+                         if (item2.contains(item)){
+                            index = path3.findIndexOf { it == item }
+                            snykdephorusec.add(line3[index])
+                            break
+                         }
+                     }
+                     
+                 }
+                 
+                 for(item in snykdephorusec){
+                     def occ = snykdephorusec.count(item)
+                     echo "${item} + intersec in dependencies = ${occ}"
+                 }
+            }
+      }
+    }
+    /*
+    stage('Horusec and Snyk IaC Vulnerability Match') {
+      steps {
+             script {
+                 //ici on prend both les lignes et paths qui ne matchent pas avec code et dep
+                 
+                 for (item2 in path2){
+                     for(item in path){
+                         if (item2.contains(item)){
+                            index = path.findIndexOf { it == item }
+                            index2 = path2.findIndexOf { it == item2 }
+                            if(line[index] == line2[index2]){
+                              horusecvulnerabilities.remove(index2)
+                            }
+                         }
+                     }
+                     
+                 }
+                 
+                 
+                 for (item2 in path2){
+                     for(item in path3){
+                         if (item2.contains(item)){
+                            index2 = path2.findIndexOf { it == item2 }
+                            horusecvulnerabilities.remove(index2)
+                         }
+                     }
+                     
+                 }
+                 
+                 def iacVul = horusecvulnerabilities.unique(false)
+                 for(item in iacVul){
+                     def occ = iacVul.count(item)
+                     echo "${item} + intersec in infrastructure = ${occ}"
+                 }
+            }
+      }
+    }
+    
+ /*
+    stage('Now we display Code results per language') {
+      steps {
+             script {
+                 
+                  echo "DESCRIPTION+++++++++++++++++++++++++++++++++++++++++++++LEVEL++++++++++++++++++++++++++++++++++++++++++++++TOTAL"
+                   for (i in desc2){
+                       def index = desc2.findIndexOf { it == i }
+                       echo "${i}                                ${niv2[index]}                                ${NUMBERS[index]}"
+                   }
+            }
+       }*/
+
+      
+   }
+}   }
